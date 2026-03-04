@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>XAUUSD 日线 K 线图（Stooq）</title>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 16px; background: #0f1115; color: #e6e6e6; }
+    h1 { margin: 0 0 8px; font-size: 20px; }
+    .meta { color: #a9b1bd; margin-bottom: 10px; font-size: 13px; }
+    .wrap { border: 1px solid #2a2f3a; border-radius: 8px; padding: 12px; background: #141821; }
+    canvas { width: 100%; max-width: 1200px; height: 640px; display: block; background: #121620; border-radius: 6px; }
+    .tip { margin-top: 10px; color: #a9b1bd; font-size: 12px; }
+    code { background: #202734; padding: 2px 4px; border-radius: 4px; }
+  </style>
+</head>
+<body>
+  <h1>XAUUSD 日线 K 线图（近 180 根）</h1>
+  <div class="meta" id="meta">加载中...</div>
+  <div class="wrap">
+    <canvas id="chart" width="1200" height="640"></canvas>
+  </div>
+  <div class="tip">
+    同目录数据文件：<code>xauusd_daily_stooq.csv</code>。<br>
+    如直接双击 HTML 打开失败，请在该目录启动静态服务：<code>python3 -m http.server 8000</code>，然后访问 <code>http://localhost:8000/xauusd_kline.html</code>。
+  </div>
+
+  <script>
+    const canvas = document.getElementById('chart');
+    const ctx = canvas.getContext('2d');
+    const meta = document.getElementById('meta');
+
+    function parseCsv(text) {
+      const lines = text.trim().split(/\r?\n/);
+      const rows = [];
+      for (let i = 1; i < lines.length; i++) {
+        const [date, open, high, low, close] = lines[i].split(',');
+        const o = Number(open), h = Number(high), l = Number(low), c = Number(close);
+        if (!date || Number.isNaN(o) || Number.isNaN(h) || Number.isNaN(l) || Number.isNaN(c)) continue;
+        rows.push({ date, open: o, high: h, low: l, close: c });
+      }
+      return rows;
+    }
+
+    function draw(data) {
+      const w = canvas.width;
+      const h = canvas.height;
+      const pad = { left: 70, right: 20, top: 20, bottom: 40 };
+      const plotW = w - pad.left - pad.right;
+      const plotH = h - pad.top - pad.bottom;
+
+      const highs = data.map(d => d.high);
+      const lows = data.map(d => d.low);
+      const maxY = Math.max(...highs);
+      const minY = Math.min(...lows);
+      const ySpan = maxY - minY || 1;
+
+      const xStep = plotW / data.length;
+      const candleW = Math.max(2, Math.min(10, xStep * 0.7));
+
+      const y = (v) => pad.top + (maxY - v) / ySpan * plotH;
+
+      ctx.clearRect(0, 0, w, h);
+      ctx.fillStyle = '#121620';
+      ctx.fillRect(0, 0, w, h);
+
+      ctx.strokeStyle = '#2e3645';
+      ctx.lineWidth = 1;
+      for (let i = 0; i <= 5; i++) {
+        const yy = pad.top + (plotH / 5) * i;
+        ctx.beginPath();
+        ctx.moveTo(pad.left, yy);
+        ctx.lineTo(w - pad.right, yy);
+        ctx.stroke();
+
+        const price = (maxY - (ySpan / 5) * i).toFixed(2);
+        ctx.fillStyle = '#9aa4b2';
+        ctx.font = '12px sans-serif';
+        ctx.fillText(price, 8, yy + 4);
+      }
+
+      data.forEach((d, i) => {
+        const cx = pad.left + i * xStep + xStep / 2;
+        const yo = y(d.open);
+        const yc = y(d.close);
+        const yh = y(d.high);
+        const yl = y(d.low);
+        const up = d.close >= d.open;
+        const color = up ? '#2ecc71' : '#e74c3c';
+
+        ctx.strokeStyle = color;
+        ctx.beginPath();
+        ctx.moveTo(cx, yh);
+        ctx.lineTo(cx, yl);
+        ctx.stroke();
+
+        const top = Math.min(yo, yc);
+        const bodyH = Math.max(1, Math.abs(yc - yo));
+        ctx.fillStyle = color;
+        ctx.fillRect(cx - candleW / 2, top, candleW, bodyH);
+      });
+
+      const ticks = 6;
+      ctx.fillStyle = '#9aa4b2';
+      ctx.font = '12px sans-serif';
+      for (let i = 0; i <= ticks; i++) {
+        const idx = Math.min(data.length - 1, Math.floor((data.length - 1) * i / ticks));
+        const x = pad.left + idx * xStep + xStep / 2;
+        const label = data[idx].date;
+        ctx.fillText(label, x - 35, h - 14);
+      }
+
+      ctx.strokeStyle = '#4a5468';
+      ctx.strokeRect(pad.left, pad.top, plotW, plotH);
+    }
+
+    async function main() {
+      try {
+        const res = await fetch('./xauusd_daily_stooq.csv', { cache: 'no-cache' });
+        if (!res.ok) throw new Error(`CSV 读取失败: ${res.status}`);
+        const csv = await res.text();
+        const rows = parseCsv(csv);
+        if (!rows.length) throw new Error('CSV 无有效数据');
+
+        const bars = rows.slice(-180);
+        draw(bars);
+
+        const first = bars[0];
+        const last = bars[bars.length - 1];
+        const changePct = ((last.close - first.close) / first.close) * 100;
+        meta.textContent = `数据源: Stooq XAUUSD | 样本: ${bars.length} 根 | 区间: ${first.date} ~ ${last.date} | 涨跌幅: ${changePct.toFixed(2)}%`;
+      } catch (err) {
+        meta.textContent = `加载失败：${err.message}`;
+      }
+    }
+
+    main();
+  </script>
+</body>
+</html>
