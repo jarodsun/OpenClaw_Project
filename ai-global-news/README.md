@@ -19,5 +19,9 @@
 ## 文档导航
 
 - `docs/01-requirements-and-mvp.md`
+- `docs/01-requirements-review.md`
+- `docs/01-mvp-metrics-review.md`
 - `docs/02-source-priority-list.md`
 - `docs/03-execution-plan.md`
+- `docs/04-acceptance-test-plan.md`
+- `docs/05-scope-change-log.md`
