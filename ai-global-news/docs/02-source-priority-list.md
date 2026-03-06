@@ -5,14 +5,14 @@
 1. OpenAI Blog（产品与模型发布）
    - 官方链接：<https://openai.com/news/>
 2. Google DeepMind Blog
-   - 官方链接：<https://deepmind.google/discover/blog/>
+   - 官方链接：<https://deepmind.google/blog/>
 3. Anthropic News/Blog
    - 官方链接：<https://www.anthropic.com/news>
 4. Meta AI Blog
    - 官方链接：<https://ai.meta.com/blog/>
 5. Microsoft Research / Azure AI Blog
    - 官方链接（Microsoft Research）：<https://www.microsoft.com/en-us/research/blog/>
-   - 官方链接（Azure AI）：<https://azure.microsoft.com/en-us/blog/topics/ai-machine-learning/>
+   - 官方链接（Azure AI）：<https://azure.microsoft.com/en-us/blog/category/ai-machine-learning/>
 6. NVIDIA Blog (AI)
    - 官方链接：<https://blogs.nvidia.com/blog/category/deep-learning/>
 7. Hugging Face Blog
