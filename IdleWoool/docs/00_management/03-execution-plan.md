@@ -36,7 +36,7 @@
 ### D3.1 架构蓝图
 - [x] 完成 `docs/10_game_design/30-architecture-overview.md`
 - [x] 完成 `docs/10_game_design/31-frontend-nextjs-architecture.md`
-- [ ] 完成 `docs/10_game_design/32-backend-fastapi-architecture.md`
+- [x] 完成 `docs/10_game_design/32-backend-fastapi-architecture.md`
 - [ ] 完成 `docs/10_game_design/33-database-sqlite3-schema.md`
 
 ### D3.2 接口与数据流

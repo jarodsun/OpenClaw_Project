@@ -132,3 +132,15 @@
 - 复评审结论：通过（与 D3.1 阶段一致，未引入范围漂移，可直接衔接 `34/35/41` 文档）。
 - 需用户拍板：无新增（继续沿用 `09-open-questions.md` 的 `Q-001` 默认口径）。
 - 证据文件：`docs/10_game_design/31-frontend-nextjs-architecture.md`、`docs/00_management/03-execution-plan.md`、`docs/00_management/05-scope-change-log.md`
+
+### 2026-03-07 06:00（Asia/Shanghai）
+- 执行项：完成 `docs/10_game_design/32-backend-fastapi-architecture.md` v1.0，补齐后端分层、模块职责、战斗/离线结算流程、幂等一致性、错误模型、观测与安全基线。
+- 评审发现：
+  1) 原文档仅为占位内容，无法支撑 D3.2 的 API 与数据流文档落地；
+  2) 初稿在“失败降级”中未区分关键链路与非关键链路，存在执行歧义。
+- 自动修正：
+  1) 将占位稿重构为可执行架构文档，并明确与 `30/33/34/35` 的衔接；
+  2) 补充降级策略分层（配置读取失败回退、埋点失败不阻塞、审计失败补偿标记），确保可落地。
+- 复评审结论：通过（与 D3.1 阶段一致，未引入范围漂移，可直接衔接 `33/34/35/41` 文档）。
+- 需用户拍板：无新增（继续沿用 `09-open-questions.md` 的 `Q-001` 默认口径）。
+- 证据文件：`docs/10_game_design/32-backend-fastapi-architecture.md`、`docs/00_management/03-execution-plan.md`、`docs/00_management/05-scope-change-log.md`

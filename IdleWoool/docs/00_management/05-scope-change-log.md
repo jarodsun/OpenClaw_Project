@@ -83,3 +83,8 @@
 - 原因：D3.1 缺少前端实现蓝图，导致页面分层、状态流转与接口编排口径不统一
 - 影响：`34-api-contract.md`、`35-save-and-sync-strategy.md`、`41-testing-strategy.md` 可基于统一前端约束继续推进
 - 状态：生效
+
+- 变更：完成并落地 `docs/10_game_design/32-backend-fastapi-architecture.md` v1.0（分层架构、关键流程、幂等一致性、错误模型、观测与安全基线）
+- 原因：D3.1 缺少后端实现蓝图，导致接口契约、数据库设计与结算一致性约束无法收敛
+- 影响：`33-database-sqlite3-schema.md`、`34-api-contract.md`、`35-save-and-sync-strategy.md`、`41-testing-strategy.md` 可按统一后端约束继续推进
+- 状态：生效
