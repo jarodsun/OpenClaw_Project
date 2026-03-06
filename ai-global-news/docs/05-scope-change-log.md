@@ -164,3 +164,17 @@
 - 现象：执行仓库扫描命令 `rg --files` 时报错 `command not found: rg`。
 - 根因：当前运行环境未安装 ripgrep。
 - 处理：按容错策略立即回退为 `find` 完成文件检索，未阻塞本次执行计划推进。
+
+### 2026-03-06 20:05（执行问题与修复）
+
+- 时间：2026-03-06 20:05 CST
+- 现象：执行仓库扫描命令 `rg -n ...` 时报错 `command not found: rg`，命令中断。
+- 根因：当前运行环境未安装 ripgrep。
+- 处理：按容错策略回退为 `grep -RIn` 与 `find` 完成检索，继续推进去重策略实现。
+
+### 2026-03-06 20:07（执行问题与修复）
+
+- 时间：2026-03-06 20:07 CST
+- 现象：执行 `python3 -m unittest tests/test_dedup.py` 报错 `ModuleNotFoundError: No module named 'sqlalchemy'`。
+- 根因：新增测试直接导入 `Article` ORM 模型，触发对 SQLAlchemy 的运行时依赖；当前环境未安装该依赖。
+- 处理：重构 `dedup.py` 为 `TYPE_CHECKING` 条件导入，测试改为 `ArticleStub`，消除该测试路径对 SQLAlchemy 的硬依赖并验证通过。

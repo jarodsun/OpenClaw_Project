@@ -3,16 +3,18 @@ from __future__ import annotations
 import asyncio
 import logging
 import time
+
 from sqlalchemy.exc import IntegrityError
 
 from app.collectors.api import APICollector
 from app.collectors.base import CollectorKind
 from app.collectors.rss import RSSCollector
-from app.collectors.web import WEBCollector
 from app.collectors.sources import list_high_priority_sources
+from app.collectors.web import WEBCollector
 from app.core.config import get_settings
 from app.db.session import SessionLocal
 from app.models.article import Article
+from app.services.dedup import Deduplicator
 from app.services.text_normalizer import normalize_text
 
 logger = logging.getLogger(__name__)
@@ -88,12 +90,21 @@ def run_ingest_once() -> dict[str, int]:
     fetched = 0
     inserted = 0
     skipped = 0
+    deduped = 0
     collect_retried = 0
     db_retried = 0
     failed_writes = 0
     failed_sources = 0
 
     with SessionLocal() as db:
+        existing_articles = (
+            db.query(Article)
+            .order_by(Article.ingested_at.desc())
+            .limit(500)
+            .all()
+        )
+        deduplicator = Deduplicator(existing_articles=existing_articles)
+
         for source in sources:
             collector = _collector_for_kind(source.kind)
             if collector is None:
@@ -116,11 +127,20 @@ def run_ingest_once() -> dict[str, int]:
 
             fetched += len(articles)
             for item in articles:
+                snapshot = deduplicator.build_snapshot(
+                    url=item.url,
+                    title=normalize_text(item.title) or item.title,
+                )
+                if deduplicator.is_duplicate(snapshot):
+                    deduped += 1
+                    skipped += 1
+                    continue
+
                 db.add(
                     Article(
                         source_name=item.source_name,
                         title=normalize_text(item.title) or item.title,
-                        url=item.url,
+                        url=snapshot.canonical_url,
                         author=normalize_text(item.author),
                         language=normalize_text(item.language),
                         content_raw=normalize_text(item.content_raw),
@@ -131,10 +151,12 @@ def run_ingest_once() -> dict[str, int]:
                     try:
                         db.commit()
                         inserted += 1
+                        deduplicator.remember(snapshot)
                         break
                     except IntegrityError:
                         db.rollback()
                         skipped += 1
+                        deduplicator.remember(snapshot)
                         break
                     except Exception as exc:
                         db.rollback()
@@ -159,6 +181,7 @@ def run_ingest_once() -> dict[str, int]:
         'db_retried': db_retried,
         'fetched': fetched,
         'inserted': inserted,
+        'deduped': deduped,
         'skipped': skipped,
         'failed_writes': failed_writes,
     }
