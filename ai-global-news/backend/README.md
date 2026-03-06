@@ -46,3 +46,15 @@ FastAPI 后端骨架。
   - 基于标准库 `urllib + ElementTree` 拉取并解析 RSS
   - 输出统一 `CollectedArticle` 列表
 - 暂未接入调度与数据库写入，当前用于后续来源接入的接口基线。
+
+## 首批 12 来源种子数据（Phase 2 推进）
+
+- 来源定义：`app/collectors/sources.py`
+- 入库脚本：`scripts/seed_high_priority_sources.py`
+- 执行方式（在 `backend/` 目录）：
+  - `python -m app.main`（可选，先验证环境）
+  - `python scripts/seed_high_priority_sources.py`
+
+脚本会按来源名称进行幂等更新：
+- 新来源不存在时创建
+- 已存在来源会更新分类、主页、RSS 地址与采集器类型备注

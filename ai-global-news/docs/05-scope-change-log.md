@@ -45,3 +45,24 @@
 - 现象：执行仓库扫描命令 `rg --files` 时报错 `command not found: rg`。
 - 根因：当前运行环境未安装 ripgrep。
 - 处理：立即切换为 `find . -type f` 完成文件枚举，不阻塞本次任务推进。
+
+### 2026-03-06 18:34（执行问题与修复）
+
+- 时间：2026-03-06 18:34 CST
+- 现象：写入 `backend/scripts/seed_high_priority_sources.py` 首次失败，报错 `no such file or directory`。
+- 根因：`backend/scripts/` 目录尚未创建。
+- 处理：先执行 `mkdir -p backend/scripts`，随后使用 heredoc 重试写入成功。
+
+### 2026-03-06 18:35（执行问题与修复）
+
+- 时间：2026-03-06 18:35 CST
+- 现象：尝试使用 `apply_patch` 命令更新 `__init__.py`，报错 `command not found: apply_patch`。
+- 根因：当前环境未提供 `apply_patch` 可执行程序。
+- 处理：回退为 `cat/heredoc` 直接重写目标文件并继续执行。
+
+### 2026-03-06 18:36（执行问题与修复）
+
+- 时间：2026-03-06 18:36 CST
+- 现象：执行 `python scripts/seed_high_priority_sources.py` 报错 `command not found: python`；改用 `python3` 后再次报错 `ModuleNotFoundError: No module named 'sqlalchemy'`。
+- 根因：环境仅提供 `python3`，且未安装后端依赖。
+- 处理：改用 `python3 -m compileall` 做语法级验证；将“安装依赖后执行种子脚本”登记为下一步阻塞解除动作。
