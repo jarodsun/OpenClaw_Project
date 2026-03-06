@@ -1,13 +1,18 @@
 import asyncio
+import json
 import logging
 import time
 from contextlib import asynccontextmanager
 from datetime import UTC, datetime
 
-from fastapi import FastAPI, Request
+from fastapi import Depends, FastAPI, HTTPException, Query, Request
+from sqlalchemy import func, or_, select
+from sqlalchemy.orm import Session
 
 from app.core.config import get_settings
 from app.core.logging import setup_logging
+from app.db.session import SessionLocal
+from app.models.article import Article
 from app.services.ingest_scheduler import IngestScheduler, run_ingest_once as run_ingest_once_sync
 
 
@@ -62,3 +67,87 @@ def health() -> dict[str, str | float]:
 @app.get('/jobs/ingest/run-once')
 async def run_ingest_once() -> dict[str, int]:
     return await asyncio.to_thread(run_ingest_once_sync)
+
+
+def get_db() -> Session:
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
+
+
+def _parse_tags(raw_tags: str | None) -> list[str]:
+    if not raw_tags:
+        return []
+    try:
+        parsed = json.loads(raw_tags)
+        if isinstance(parsed, list):
+            return [str(item) for item in parsed if isinstance(item, str)]
+    except json.JSONDecodeError:
+        logger.warning('article tags is invalid JSON: %s', raw_tags)
+    return []
+
+
+def _serialize_article(article: Article) -> dict[str, object | None]:
+    return {
+        'id': article.id,
+        'source_name': article.source_name,
+        'title': article.title,
+        'url': article.url,
+        'author': article.author,
+        'language': article.language,
+        'tags': _parse_tags(article.tags),
+        'summary': article.summary,
+        'published_at': article.published_at.isoformat() if article.published_at else None,
+        'ingested_at': article.ingested_at.isoformat(),
+    }
+
+
+@app.get('/api/articles')
+def list_articles(
+    q: str | None = Query(default=None, min_length=1),
+    source: str | None = Query(default=None, min_length=1),
+    tag: str | None = Query(default=None, min_length=1),
+    offset: int = Query(default=0, ge=0),
+    limit: int = Query(default=20, ge=1, le=100),
+    db: Session = Depends(get_db),
+) -> dict[str, object]:
+    statement = select(Article)
+
+    if source:
+        statement = statement.where(Article.source_name == source)
+    if q:
+        like_pattern = f'%{q}%'
+        statement = statement.where(
+            or_(
+                Article.title.ilike(like_pattern),
+                Article.summary.ilike(like_pattern),
+                Article.content_raw.ilike(like_pattern),
+            )
+        )
+    if tag:
+        statement = statement.where(Article.tags.ilike(f'%"{tag}"%'))
+
+    total = db.execute(select(func.count()).select_from(statement.subquery())).scalar_one()
+    rows = db.execute(
+        statement.order_by(Article.ingested_at.desc()).offset(offset).limit(limit)
+    ).scalars().all()
+
+    return {
+        'total': total,
+        'offset': offset,
+        'limit': limit,
+        'items': [_serialize_article(article) for article in rows],
+    }
+
+
+@app.get('/api/articles/{article_id}')
+def article_detail(article_id: int, db: Session = Depends(get_db)) -> dict[str, object | None]:
+    article = db.get(Article, article_id)
+    if article is None:
+        raise HTTPException(status_code=404, detail='article not found')
+
+    result = _serialize_article(article)
+    result['content_raw'] = article.content_raw
+    return result

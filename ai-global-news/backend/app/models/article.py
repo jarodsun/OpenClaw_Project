@@ -16,6 +16,7 @@ class Article(Base):
     author: Mapped[str | None] = mapped_column(String(120), nullable=True)
     language: Mapped[str | None] = mapped_column(String(16), nullable=True)
     tags: Mapped[str | None] = mapped_column(Text, nullable=True)
+    summary: Mapped[str | None] = mapped_column(Text, nullable=True)
     content_raw: Mapped[str | None] = mapped_column(Text, nullable=True)
     published_at: Mapped[datetime | None] = mapped_column(DateTime, nullable=True)
     ingested_at: Mapped[datetime] = mapped_column(DateTime, nullable=False, default=datetime.utcnow)

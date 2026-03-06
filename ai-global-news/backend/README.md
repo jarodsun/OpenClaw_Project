@@ -43,6 +43,15 @@ FastAPI 后端骨架。
   - 空白内容归一化为 `None`
 - 入库前在 `ingest_scheduler` 对 `title/author/language/content_raw` 做基础规范化。
 
+## 摘要生成（Phase 3 完成）
+
+- 摘要服务：`app/services/summarizer.py`
+  - 优先提炼首句生成摘要
+  - 失败自动降级到 `summary/content/title`
+  - 内置 LRU 缓存，避免重复文本重复计算
+- 入库链路：`ingest_scheduler` 已将摘要写入 `articles.summary` 字段。
+- 迁移脚本：`alembic/versions/20260306_2040_add_article_summary.py`
+
 ## 采集器接口（Phase 2）
 
 - 抽象定义：`app/collectors/base.py`

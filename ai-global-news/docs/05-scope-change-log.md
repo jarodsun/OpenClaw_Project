@@ -199,3 +199,38 @@
 - 现象：执行 `python3 -m unittest tests.test_classifier ...` 首轮失败，断言 `product` 标签未命中。
 - 根因：规则分类器 `product` 关键词仅含英文词，未覆盖“发布/上线/更新”等中文高频词。
 - 处理：补充中文关键词后重跑同一测试集通过（8/8）。
+
+### 2026-03-06 20:41（执行问题与修复）
+
+- 时间：2026-03-06 20:41 CST
+- 现象：执行 `rg --files` 时报错 `command not found: rg`。
+- 根因：当前运行环境未安装 ripgrep。
+- 处理：按容错策略回退为 `find -maxdepth ... -type f` 完成文件扫描，继续任务。
+
+### 2026-03-06 20:42（执行问题与修复）
+
+- 时间：2026-03-06 20:42 CST
+- 现象：执行 `find ... | sed` 时报错 `bad flag in substitute command`。
+- 根因：BSD sed 对该替换表达式解析失败。
+- 处理：移除不必要 `sed` 步骤，改为直接 `find ... | head` 输出结果。
+
+### 2026-03-06 20:56（执行问题与修复）
+
+- 时间：2026-03-06 20:56 CST
+- 现象：执行 `exec + apply_patch` 更新 `backend/app/main.py` 时报错 `command not found: apply_patch`。
+- 根因：当前终端环境不提供 `apply_patch` 可执行命令。
+- 处理：按容错策略回退为 `exec + cat/heredoc` 覆写文件并继续执行。
+
+### 2026-03-06 20:57（执行问题与修复）
+
+- 时间：2026-03-06 20:57 CST
+- 现象：执行 `python3 -m unittest tests/test_api_articles.py` 时报错 `starlette.testclient module requires httpx`。
+- 根因：`fastapi.testclient` 依赖 `httpx`，`backend/requirements.txt` 未声明该依赖。
+- 处理：补充 `httpx==0.28.1` 到 `backend/requirements.txt`，重新安装依赖后继续测试。
+
+### 2026-03-06 20:58（执行问题与修复）
+
+- 时间：2026-03-06 20:58 CST
+- 现象：API 单测首次运行报错 `sqlite3.OperationalError: no such table: articles`。
+- 根因：测试使用内存 SQLite 时，每连接独立数据库导致表结构未共享到请求线程。
+- 处理：改为 `sqlite+pysqlite:// + StaticPool` 共享连接池，重跑测试通过。

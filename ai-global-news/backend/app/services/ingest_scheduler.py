@@ -17,6 +17,7 @@ from app.db.session import SessionLocal
 from app.models.article import Article
 from app.services.classifier import classify_tags
 from app.services.dedup import Deduplicator
+from app.services.summarizer import summary_service
 from app.services.text_normalizer import normalize_text
 
 logger = logging.getLogger(__name__)
@@ -142,6 +143,11 @@ def run_ingest_once() -> dict[str, int]:
                 normalized_summary = normalize_text(item.summary)
                 normalized_content = normalize_text(item.content_raw)
                 tags = classify_tags(normalized_title, normalized_summary, normalized_content)
+                summary = summary_service.generate(
+                    title=normalized_title,
+                    summary=normalized_summary,
+                    content=normalized_content,
+                )
 
                 db.add(
                     Article(
@@ -151,6 +157,7 @@ def run_ingest_once() -> dict[str, int]:
                         author=normalize_text(item.author),
                         language=normalize_text(item.language),
                         tags=json.dumps(tags, ensure_ascii=False),
+                        summary=summary,
                         content_raw=normalized_content,
                         published_at=item.published_at,
                     )
