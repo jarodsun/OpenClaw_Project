@@ -23,6 +23,9 @@ class Settings(BaseSettings):
     log_level: str = Field(default='INFO')
 
     database_url: str = Field(default='sqlite:///./ai_global_news_dev.db')
+    ingest_collect_max_attempts: int = Field(default=3)
+    ingest_collect_backoff_seconds: float = Field(default=1.0)
+    ingest_db_max_attempts: int = Field(default=2)
 
 
 class DevSettings(Settings):

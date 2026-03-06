@@ -73,3 +73,10 @@
 - 现象：按流程尝试用 `exec` 调用 `apply_patch` 修改 `backend/app/main.py`，返回 `command not found: apply_patch`。
 - 根因：当前环境无 `apply_patch` shell 命令，仅支持常规 shell 与 heredoc 写入。
 - 处理：立即回退为 `cat/heredoc` 直接覆写文件并继续执行；随后用 `python3 -m compileall backend/app` 完成语法验证。
+
+### 2026-03-06 18:56（执行问题与修复）
+
+- 时间：2026-03-06 18:56 CST
+- 现象：执行仓库文件扫描命令 `rg --files` 时报错 `command not found: rg`。
+- 根因：当前执行环境未安装 ripgrep。
+- 处理：即时回退为 `find . -maxdepth 4 -type f` 完成文件发现，未影响本次“失败重试闭环”实现。
