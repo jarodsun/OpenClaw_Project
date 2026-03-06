@@ -24,19 +24,6 @@ class Settings(BaseSettings):
 
     database_url: str = Field(default='sqlite:///./ai_global_news_dev.db')
 
-    mysql_host: str = Field(default='127.0.0.1')
-    mysql_port: int = Field(default=3306)
-    mysql_user: str = Field(default='ai_news')
-    mysql_password: str = Field(default='ai_news')
-    mysql_db: str = Field(default='ai_global_news')
-
-    @property
-    def mysql_url(self) -> str:
-        return (
-            f"mysql+pymysql://{self.mysql_user}:{self.mysql_password}"
-            f"@{self.mysql_host}:{self.mysql_port}/{self.mysql_db}"
-        )
-
 
 class DevSettings(Settings):
     app_env: AppEnv = 'dev'
@@ -48,9 +35,7 @@ class ProdSettings(Settings):
     app_env: AppEnv = 'prod'
     debug: bool = False
     log_level: str = 'INFO'
-    database_url: str = Field(
-        default='mysql+pymysql://ai_news:ai_news@127.0.0.1:3306/ai_global_news'
-    )
+    database_url: str = Field(default='sqlite:///./ai_global_news_prod.db')
 
 
 @lru_cache(maxsize=1)
