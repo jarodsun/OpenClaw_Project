@@ -297,3 +297,10 @@
 - 现象：按约定尝试使用 `exec + apply_patch` 更新计划文档时，终端返回 `command not found: apply_patch`。
 - 根因：当前环境未提供 `apply_patch` 可执行命令。
 - 处理：按容错策略回退为 `exec + perl -0777 -i` 文本替换，完成 `docs/03-execution-plan.md` 更新并校验生效。
+
+### 2026-03-06 23:59（执行问题与修复）
+
+- 时间：2026-03-06 23:59 CST
+- 现象：执行 `exec + apply_patch` 更新 `docs/03-execution-plan.md` 时，终端报错 `command not found: apply_patch`。
+- 根因：当前终端环境未提供 `apply_patch` 可执行命令。
+- 处理：按容错策略回退为 `exec + perl -0777 -i` 文本替换，已完成计划勾选与进展写入。
