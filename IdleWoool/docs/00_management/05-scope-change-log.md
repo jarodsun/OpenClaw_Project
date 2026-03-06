@@ -63,3 +63,8 @@
 - 原因：D2.2 中离线收益规则缺失，无法闭合“在线/离线循环”与后续平衡、接口设计
 - 影响：`20-balance-framework.md`、`21-content-config-schema.md`、`34-api-contract.md` 可基于统一离线结算口径继续推进
 - 状态：生效
+
+- 变更：完成并落地 `docs/10_game_design/20-balance-framework.md` v1.0（指标体系、公式框架、资源闭环约束、调参与回滚策略、DoD）
+- 原因：D2.2 缺少统一平衡框架，导致战斗/装备/离线/成长文档难以形成可联调的共同口径
+- 影响：`21-content-config-schema.md`、`34-api-contract.md`、`41-testing-strategy.md` 可基于统一指标与公式继续推进
+- 状态：生效

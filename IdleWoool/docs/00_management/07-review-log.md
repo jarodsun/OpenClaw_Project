@@ -84,3 +84,15 @@
 - 复评审结论：通过（与 D2.2 阶段一致，未引入范围漂移，且可直接衔接 `20/21/34` 文档）。
 - 需用户拍板：无新增（继续沿用 `09-open-questions.md` 的 `Q-001` 默认口径）。
 - 证据文件：`docs/10_game_design/13-system-offline-rewards.md`、`docs/00_management/03-execution-plan.md`、`docs/00_management/05-scope-change-log.md`
+
+### 2026-03-07 05:20（Asia/Shanghai）
+- 执行项：完成 `docs/10_game_design/20-balance-framework.md` v1.0，补齐平衡目标、指标体系、公式框架、资源闭环约束、调参流程与回滚策略。
+- 评审发现：
+  1) 原文档为占位内容，无法支撑后续配置建模与联调验收；
+  2) 初稿中“关卡强度曲线”描述未明确分段策略与校验锚点，执行层面可操作性不足。
+- 自动修正：
+  1) 将占位稿重构为可执行文档，明确体验指标、数值健康指标、技术指标与 DoD；
+  2) 新增分段强度曲线与“每 10 关校验锚点”规则，并补充调参回滚阈值。
+- 复评审结论：通过（与 D2.2 阶段一致，未引入范围漂移，可直接衔接 `21/34/41` 文档）。
+- 需用户拍板：无新增（继续沿用 `09-open-questions.md` 的 `Q-001` 默认口径）。
+- 证据文件：`docs/10_game_design/20-balance-framework.md`、`docs/00_management/03-execution-plan.md`、`docs/00_management/05-scope-change-log.md`
