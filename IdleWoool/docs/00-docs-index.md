@@ -8,6 +8,10 @@
 ## 00 管理与跟踪
 - `docs/00_management/03-execution-plan.md`
 - `docs/00_management/05-scope-change-log.md`
+- `docs/00_management/06-review-checklist.md`
+- `docs/00_management/07-review-log.md`
+- `docs/00_management/08-decision-register.md`
+- `docs/00_management/09-open-questions.md`
 
 ## 10 游戏开发文档
 
