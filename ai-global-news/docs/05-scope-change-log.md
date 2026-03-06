@@ -290,3 +290,10 @@
 - 现象：执行 `npm -C frontend run lint` 报错 `Missing script: "lint"`。
 - 根因：`frontend/package.json` 未定义 `lint` 脚本，仅包含 `dev/build/start`。
 - 处理：改为执行 `npm -C frontend run build` 作为本轮前端改动的可执行校验；后续可补充 ESLint 配置与 `lint` 脚本。
+
+### 2026-03-06 23:46（执行问题与修复）
+
+- 时间：2026-03-06 23:46 CST
+- 现象：按约定尝试使用 `exec + apply_patch` 更新计划文档时，终端返回 `command not found: apply_patch`。
+- 根因：当前环境未提供 `apply_patch` 可执行命令。
+- 处理：按容错策略回退为 `exec + perl -0777 -i` 文本替换，完成 `docs/03-execution-plan.md` 更新并校验生效。

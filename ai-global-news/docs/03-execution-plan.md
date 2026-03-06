@@ -36,7 +36,8 @@
 
 - [x] API：资讯列表、详情、搜索、筛选
   - 进展：已支持列表/详情、关键词搜索、来源过滤、标签过滤、发布时间区间过滤（`published_from` / `published_to`），并补齐组合筛选与统一排序回归用例。
-- [ ] Next.js：资讯流、详情页、标签页
+- [x] Next.js：资讯流、详情页、标签页
+  - 进展：`frontend/app/page.js`（资讯流）、`frontend/app/articles/[id]/page.js`（详情页）、`frontend/app/tags/[tag]/page.js`（标签页）均已落地并接入后端 API。
 - [x] 增加基础管理页（来源状态、任务状态）
   - 进展：后端已新增接口 `/api/admin/sources` 与 `/api/admin/jobs/status`；前端管理页已支持 token 持久化、401 鉴权提示、回车刷新与“手动触发采集”交互。
 
