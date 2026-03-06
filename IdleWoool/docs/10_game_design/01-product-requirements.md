@@ -113,4 +113,4 @@ MVP 不纳入：
 1. 目标用户、核心循环、MVP 边界明确且无冲突。
 2. 职业与成长维度覆盖后续系统设计所需最小信息集。
 3. 指标与风险已定义，可在测试与运营文档中继续细化。
-4. 与 `docs/02-game-design-core-loop.md`、`docs/03-feature-scope-mvp.md` 保持一致。
+4. 与 `docs/10_game_design/02-game-design-core-loop.md`、`docs/10_game_design/03-feature-scope-mvp.md` 保持一致。

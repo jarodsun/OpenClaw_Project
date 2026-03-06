@@ -16,7 +16,7 @@
 ### D2.1 产品与范围
 - [ ] 完成 `docs/10_game_design/01-product-requirements.md`
 - [ ] 完成 `docs/10_game_design/03-feature-scope-mvp.md`
-- [ ] 完成 `docs/10_game_design/02-game-design-core-loop.md`
+- [x] 完成 `docs/10_game_design/02-game-design-core-loop.md`
 
 ### D2.2 系统与数值
 - [ ] 完成 `docs/10_game_design/10-system-combat-and-progression.md`
