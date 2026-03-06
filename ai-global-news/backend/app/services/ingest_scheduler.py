@@ -185,16 +185,21 @@ def run_ingest_once(trace_id: str | None = None) -> dict[str, int]:
                     trace_id=trace_id,
                 )
                 collect_retried += retried_count
-            except Exception:
-                ingest_logger.exception(
-                    'collect failed after retries',
-                    extra={
-                        'service': 'ingest',
-                        'event': 'ingest.source.failed',
-                        'trace_id': trace_id,
-                        'extra_data': {'source': source.name},
+            except Exception as exc:
+                payload = {
+                    'service': 'ingest',
+                    'event': 'ingest.source.failed',
+                    'trace_id': trace_id,
+                    'extra_data': {
+                        'source': source.name,
+                        'error': str(exc),
+                        'error_type': exc.__class__.__name__,
                     },
-                )
+                }
+                if settings.log_level.upper() == 'DEBUG':
+                    ingest_logger.exception('collect failed after retries', extra=payload)
+                else:
+                    ingest_logger.error('collect failed after retries', extra=payload)
                 failed_sources += 1
                 continue
 
