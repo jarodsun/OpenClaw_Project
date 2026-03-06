@@ -14,6 +14,11 @@
 
 ### 2026-03-07
 
+- 变更：完成并落地 `docs/10_game_design/40-dev-environment-and-commands.md` v1.0（环境基线、初始化流程、联调命令、故障排查、DoD）。
+- 原因：D4.1 缺少统一开发环境与命令口径，阻塞后续测试策略与开发执行的一致性。
+- 影响：`41-testing-strategy.md`、实际开发 onboarding 与日常联调可按统一命令基线推进。
+- 状态：生效
+
 - 变更：完成 `docs/10_game_design/03-feature-scope-mvp.md` v1.0，明确 In Scope / Out of Scope、验收边界、默认风险处理与后续衔接。
 - 原因：将“产品目标”收敛为可执行 MVP 边界，避免实现阶段范围漂移。
 - 影响：D2.1 产品与范围进一步收敛，可直接驱动 10~13 系统文档与 34 接口文档编写。

@@ -180,3 +180,15 @@
 - 复评审结论：通过（与 D3.2 阶段一致，未引入范围漂移，可直接衔接 `41-testing-strategy.md`）。
 - 需用户拍板：无新增（继续沿用 `09-open-questions.md` 的 `Q-001` 默认口径）。
 - 证据文件：`docs/10_game_design/35-save-and-sync-strategy.md`、`docs/00_management/03-execution-plan.md`、`docs/00_management/05-scope-change-log.md`
+
+### 2026-03-07 06:40（Asia/Shanghai）
+- 执行项：完成 `docs/10_game_design/40-dev-environment-and-commands.md` v1.0，补齐环境基线、初始化步骤、启动命令、联调命令、故障排查与 DoD。
+- 评审发现：
+  1) 初版环境变量约束未覆盖 CI 依赖安装一致性，存在“本地可装、CI 失败”风险；
+  2) 占位文档无可执行命令，无法直接用于新人 onboarding。
+- 自动修正：
+  1) 在“2.3 环境变量约定”补充 CI 锁文件安装规则（`pnpm install --frozen-lockfile`）；
+  2) 将占位稿重构为可执行命令手册，并补齐联调最小命令集与异常处理。
+- 复评审结论：通过（与 D4.1 阶段一致，未引入范围漂移，可直接衔接 `41-testing-strategy.md`）。
+- 需用户拍板：无新增（继续沿用 `09-open-questions.md` 的 `Q-001` 默认口径）。
+- 证据文件：`docs/10_game_design/40-dev-environment-and-commands.md`、`docs/00_management/03-execution-plan.md`、`docs/00_management/05-scope-change-log.md`
