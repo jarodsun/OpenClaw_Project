@@ -12,6 +12,7 @@ from app.collectors.sources import list_high_priority_sources
 from app.core.config import get_settings
 from app.db.session import SessionLocal
 from app.models.article import Article
+from app.services.text_normalizer import normalize_text
 
 logger = logging.getLogger(__name__)
 settings = get_settings()
@@ -115,11 +116,11 @@ def run_ingest_once() -> dict[str, int]:
                 db.add(
                     Article(
                         source_name=item.source_name,
-                        title=item.title,
+                        title=normalize_text(item.title) or item.title,
                         url=item.url,
-                        author=item.author,
-                        language=item.language,
-                        content_raw=item.content_raw,
+                        author=normalize_text(item.author),
+                        language=normalize_text(item.language),
+                        content_raw=normalize_text(item.content_raw),
                         published_at=item.published_at,
                     )
                 )

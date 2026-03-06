@@ -115,3 +115,17 @@
 - 现象：执行代码检索命令 `rg -n` 时报错 `command not found: rg`。
 - 根因：当前运行环境未安装 ripgrep（rg）。
 - 处理：立即回退为 `grep -Rin` 完成检索，并继续本次任务实现（入库重试退避与指标补充）。
+
+### 2026-03-06 19:36（执行问题与修复）
+
+- 时间：2026-03-06 19:36 CST
+- 现象：写入 `backend/tests/test_text_normalizer.py` 时报错 `no such file or directory`。
+- 根因：`backend/tests/` 目录尚未创建即直接写入文件。
+- 处理：按容错策略先执行 `mkdir -p backend/tests`，再用 heredoc 重试写入成功。
+
+### 2026-03-06 19:37（执行问题与修复）
+
+- 时间：2026-03-06 19:37 CST
+- 现象：执行 `python3 -m pytest ...` 时报错 `No module named pytest`。
+- 根因：当前后端环境未安装 pytest 依赖。
+- 处理：回退为标准库 `unittest` 用例并执行 `python3 -m unittest tests/test_text_normalizer.py` 验证通过。

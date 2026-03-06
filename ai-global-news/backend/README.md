@@ -35,6 +35,14 @@ FastAPI 后端骨架。
 - 启动时根据 `AIGN_LOG_LEVEL` 初始化标准库 logging。
 - 每个 HTTP 请求输出方法、路径、状态码、耗时（毫秒）。
 
+## 文本清洗（Phase 3 启动）
+
+- 清洗模块：`app/services/text_normalizer.py`
+  - 去除 `\x00` 空字符
+  - 统一压缩空白符（空格/换行/制表）
+  - 空白内容归一化为 `None`
+- 入库前在 `ingest_scheduler` 对 `title/author/language/content_raw` 做基础规范化。
+
 ## 采集器接口（Phase 2）
 
 - 抽象定义：`app/collectors/base.py`
