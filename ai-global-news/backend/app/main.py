@@ -109,6 +109,8 @@ def list_articles(
     q: str | None = Query(default=None, min_length=1),
     source: str | None = Query(default=None, min_length=1),
     tag: str | None = Query(default=None, min_length=1),
+    published_from: datetime | None = Query(default=None),
+    published_to: datetime | None = Query(default=None),
     offset: int = Query(default=0, ge=0),
     limit: int = Query(default=20, ge=1, le=100),
     db: Session = Depends(get_db),
@@ -128,6 +130,10 @@ def list_articles(
         )
     if tag:
         statement = statement.where(Article.tags.ilike(f'%"{tag}"%'))
+    if published_from:
+        statement = statement.where(Article.published_at >= published_from)
+    if published_to:
+        statement = statement.where(Article.published_at <= published_to)
 
     total = db.execute(select(func.count()).select_from(statement.subquery())).scalar_one()
     rows = db.execute(

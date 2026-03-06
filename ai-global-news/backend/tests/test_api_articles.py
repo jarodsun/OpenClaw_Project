@@ -79,6 +79,19 @@ class ArticleApiTests(unittest.TestCase):
         self.assertEqual(len(payload['items']), 1)
         self.assertEqual(payload['items'][0]['source_name'], 'Anthropic')
 
+    def test_list_articles_with_published_range(self) -> None:
+        response = self.client.get(
+            '/api/articles',
+            params={
+                'published_from': '2026-03-06T10:30:00',
+                'published_to': '2026-03-06T11:10:00',
+            },
+        )
+        self.assertEqual(response.status_code, 200)
+        payload = response.json()
+        self.assertEqual(payload['total'], 1)
+        self.assertEqual(payload['items'][0]['title'], 'Claude 新版本发布')
+
     def test_article_detail_success(self) -> None:
         response = self.client.get('/api/articles/1')
         self.assertEqual(response.status_code, 200)
