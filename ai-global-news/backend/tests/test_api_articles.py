@@ -9,6 +9,7 @@ from sqlalchemy.pool import StaticPool
 from app.db.base import Base
 from app.main import app, get_db
 from app.models.article import Article
+from app.models.source import Source
 
 
 class ArticleApiTests(unittest.TestCase):
@@ -32,12 +33,37 @@ class ArticleApiTests(unittest.TestCase):
 
         app.dependency_overrides[get_db] = override_get_db
         self.client = TestClient(app)
+        self._seed_sources()
         self._seed_articles()
 
     def tearDown(self) -> None:
         app.dependency_overrides.clear()
         Base.metadata.drop_all(bind=self.engine)
         self.engine.dispose()
+
+    def _seed_sources(self) -> None:
+        with self.testing_session_local() as db:
+            db.add_all(
+                [
+                    Source(
+                        name='OpenAI',
+                        category='llm',
+                        homepage_url='https://openai.com',
+                        feed_url='https://openai.com/news/rss.xml',
+                        enabled=True,
+                        note='primary',
+                    ),
+                    Source(
+                        name='Anthropic',
+                        category='llm',
+                        homepage_url='https://anthropic.com',
+                        feed_url='https://anthropic.com/news/rss.xml',
+                        enabled=False,
+                        note=None,
+                    ),
+                ]
+            )
+            db.commit()
 
     def _seed_articles(self) -> None:
         with self.testing_session_local() as db:
@@ -133,6 +159,22 @@ class ArticleApiTests(unittest.TestCase):
     def test_article_detail_not_found(self) -> None:
         response = self.client.get('/api/articles/999')
         self.assertEqual(response.status_code, 404)
+
+    def test_admin_list_sources(self) -> None:
+        response = self.client.get('/api/admin/sources')
+        self.assertEqual(response.status_code, 200)
+        payload = response.json()
+        self.assertEqual(payload['total'], 2)
+        self.assertEqual([item['name'] for item in payload['items']], ['Anthropic', 'OpenAI'])
+        self.assertFalse(payload['items'][0]['enabled'])
+
+    def test_admin_jobs_status(self) -> None:
+        response = self.client.get('/api/admin/jobs/status')
+        self.assertEqual(response.status_code, 200)
+        payload = response.json()
+        self.assertIn('scheduler_running', payload)
+        self.assertIn('interval_seconds', payload)
+        self.assertIn('uptime_seconds', payload)
 
 
 if __name__ == '__main__':

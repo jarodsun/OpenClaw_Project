@@ -248,3 +248,24 @@
 - 现象：执行 `python3 -m unittest backend/tests/test_api_articles.py` 报错 `ModuleNotFoundError: No module named 'app'`。
 - 根因：未设置 `PYTHONPATH=backend`，导致测试运行时找不到后端包路径。
 - 处理：改用 `PYTHONPATH=backend python3 -m unittest backend/tests/test_api_articles.py` 重跑，验证通过。
+
+### 2026-03-06 21:36（执行问题与修复）
+
+- 时间：2026-03-06 21:36 CST
+- 现象：执行 `exec + apply_patch` 修改 `backend/app/main.py` 时，终端报错 `command not found: apply_patch`。
+- 根因：当前终端环境未提供 `apply_patch` 可执行命令。
+- 处理：按容错策略立即回退为 `exec + cat/heredoc` 写入方式，后续修改与测试流程正常完成。
+
+### 2026-03-06 21:46（执行问题与修复）
+
+- 时间：2026-03-06 21:46 CST
+- 现象：执行 `exec + apply_patch` 更新计划文档时报错 `command not found: apply_patch`。
+- 根因：当前终端环境未提供 `apply_patch` 可执行命令。
+- 处理：按容错策略立即回退为 `exec + sed/heredoc` 写入方式，后续文档更新与任务交付正常完成。
+
+### 2026-03-06 21:47（执行问题与修复）
+
+- 时间：2026-03-06 21:47 CST
+- 现象：尝试使用 `edit` 精确替换 `memory/projects.md` 时返回 `Could not find the exact text`。
+- 根因：目标文本与当前文件内容存在细微差异，导致精确匹配失败。
+- 处理：按容错策略回退为 `exec + heredoc` 全量写入，进度与阻塞信息已成功更新。

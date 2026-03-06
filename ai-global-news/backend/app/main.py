@@ -13,6 +13,7 @@ from app.core.config import get_settings
 from app.core.logging import setup_logging
 from app.db.session import SessionLocal
 from app.models.article import Article
+from app.models.source import Source
 from app.services.ingest_scheduler import IngestScheduler, run_ingest_once as run_ingest_once_sync
 
 
@@ -157,3 +158,35 @@ def article_detail(article_id: int, db: Session = Depends(get_db)) -> dict[str, 
     result = _serialize_article(article)
     result['content_raw'] = article.content_raw
     return result
+
+
+@app.get('/api/admin/sources')
+def admin_list_sources(db: Session = Depends(get_db)) -> dict[str, object]:
+    rows = db.execute(select(Source).order_by(Source.name.asc())).scalars().all()
+    return {
+        'total': len(rows),
+        'items': [
+            {
+                'id': source.id,
+                'name': source.name,
+                'category': source.category,
+                'homepage_url': source.homepage_url,
+                'feed_url': source.feed_url,
+                'enabled': source.enabled,
+                'updated_at': source.updated_at.isoformat(),
+                'note': source.note,
+            }
+            for source in rows
+        ],
+    }
+
+
+@app.get('/api/admin/jobs/status')
+def admin_jobs_status() -> dict[str, object]:
+    task = scheduler._task
+    scheduler_running = bool(task and not task.done())
+    return {
+        'scheduler_running': scheduler_running,
+        'interval_seconds': scheduler.interval_seconds,
+        'uptime_seconds': round(time.time() - start_time, 2),
+    }
