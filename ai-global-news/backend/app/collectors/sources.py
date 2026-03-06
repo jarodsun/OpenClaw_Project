@@ -42,9 +42,9 @@ HIGH_PRIORITY_SOURCES: tuple[SourceConfig, ...] = (
     SourceConfig(
         name='NVIDIA AI Blog',
         category='official_blog',
-        homepage_url='https://blogs.nvidia.com/blog/category/ai/',
-        endpoint='https://blogs.nvidia.com/blog/category/ai/feed/',
-        kind=CollectorKind.RSS,
+        homepage_url='https://blogs.nvidia.com/',
+        endpoint='https://blogs.nvidia.com/',
+        kind=CollectorKind.WEB,
     ),
     SourceConfig(
         name='Hugging Face Blog',
