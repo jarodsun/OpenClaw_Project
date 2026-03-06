@@ -24,7 +24,7 @@
 - [x] 完成 `docs/10_game_design/12-system-equipment-and-loot.md`
 - [x] 完成 `docs/10_game_design/13-system-offline-rewards.md`
 - [x] 完成 `docs/10_game_design/20-balance-framework.md`
-- [ ] 完成 `docs/10_game_design/21-content-config-schema.md`
+- [x] 完成 `docs/10_game_design/21-content-config-schema.md`
 
 ### D2.3 评审闭环沉淀
 - [ ] 每轮执行更新 `docs/00_management/07-review-log.md`

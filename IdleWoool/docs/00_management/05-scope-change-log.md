@@ -68,3 +68,8 @@
 - 原因：D2.2 缺少统一平衡框架，导致战斗/装备/离线/成长文档难以形成可联调的共同口径
 - 影响：`21-content-config-schema.md`、`34-api-contract.md`、`41-testing-strategy.md` 可基于统一指标与公式继续推进
 - 状态：生效
+
+- 变更：完成并落地 `docs/10_game_design/21-content-config-schema.md` v1.0（配置分层、核心 Schema、校验流程、热更回滚、兼容策略）
+- 原因：D2.2 缺少统一配置模型，导致系统文档难以收敛到可验证的数据契约
+- 影响：`34-api-contract.md`、`33-database-sqlite3-schema.md`、`41-testing-strategy.md` 可按统一字段与版本策略推进
+- 状态：生效

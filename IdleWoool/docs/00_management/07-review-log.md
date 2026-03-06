@@ -96,3 +96,15 @@
 - 复评审结论：通过（与 D2.2 阶段一致，未引入范围漂移，可直接衔接 `21/34/41` 文档）。
 - 需用户拍板：无新增（继续沿用 `09-open-questions.md` 的 `Q-001` 默认口径）。
 - 证据文件：`docs/10_game_design/20-balance-framework.md`、`docs/00_management/03-execution-plan.md`、`docs/00_management/05-scope-change-log.md`
+
+### 2026-03-07 05:30（Asia/Shanghai）
+- 执行项：完成 `docs/10_game_design/21-content-config-schema.md` v1.0，补齐配置分层、统一字段规范、核心 Schema 样例、静态/运行时校验、热更回滚与 DoD。
+- 评审发现：
+  1) 初版章节层级存在 `## 2.1/2.2` 误用，结构一致性不足；
+  2) 初版未显式约束“版本兼容边界”，可能导致后续配置升级策略歧义。
+- 自动修正：
+  1) 将 `2.1/2.2` 调整为 `###` 层级，统一文档结构；
+  2) 新增“5.3 版本兼容策略”，明确小版本兼容与大版本迁移要求。
+- 复评审结论：通过（与 D2.2 阶段一致，未引入范围漂移，可直接衔接 `33/34/41` 文档）。
+- 需用户拍板：无新增（继续沿用 `09-open-questions.md` 的 `Q-001`）。
+- 证据文件：`docs/10_game_design/21-content-config-schema.md`、`docs/00_management/03-execution-plan.md`、`docs/00_management/05-scope-change-log.md`
