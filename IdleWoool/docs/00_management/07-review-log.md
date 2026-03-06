@@ -241,6 +241,18 @@
 - 需用户拍板：无新增（继续沿用 `09-open-questions.md` 的 `Q-001` 默认口径）。
 - 证据文件：`docs/10_game_design/44-release-plan-and-milestones.md`、`docs/00_management/03-execution-plan.md`、`docs/00_management/05-scope-change-log.md`
 
+### 2026-03-07 07:40（Asia/Shanghai）
+- 执行项：完成 `docs/10_game_design/50-ui-ux-guidelines.md` v1.0，补齐信息架构、关键页面、交互反馈、可访问性、前端实现约束与 DoD。
+- 评审发现：
+  1) 初版自评审发现可访问性条目缺少触控尺寸与动效降级要求，移动端误触与眩晕风险未显式约束；
+  2) D5 进度尚未在执行计划勾选，管理留痕不完整。
+- 自动修正：
+  1) 在文档新增“5.3 触控与动效”，固化 `44px × 44px` 点击尺寸、主按钮安全间距与“减少动态效果”兼容策略；
+  2) 同步勾选 `03-execution-plan.md` 中 `50-ui-ux-guidelines.md` 完成状态，并更新 `05-scope-change-log.md`。
+- 复评审结论：通过（与 D5 阶段一致，未引入范围漂移，且可直接用于前端实现与测试映射）。
+- 需用户拍板：无新增（继续沿用 `09-open-questions.md` 的 `Q-001` 默认口径）。
+- 证据文件：`docs/10_game_design/50-ui-ux-guidelines.md`、`docs/00_management/03-execution-plan.md`、`docs/00_management/05-scope-change-log.md`
+
 ### 2026-03-07 07:30（Asia/Shanghai）
 - 执行项：完成 `docs/10_game_design/45-risk-register.md` v1.0，补齐风险分级与时效、Top10 风险台账、门禁映射、响应与归档流程。
 - 评审发现：

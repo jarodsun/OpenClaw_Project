@@ -14,6 +14,11 @@
 
 ### 2026-03-07
 
+- 变更：完成并落地 `docs/10_game_design/50-ui-ux-guidelines.md` v1.0（信息架构、关键页面规范、交互反馈、可访问性、前端实现约束与 DoD）。
+- 原因：D5 阶段缺少可执行 UI/UX 基线，前端页面实现与测试验收缺乏统一标准。
+- 影响：`31-frontend-nextjs-architecture.md` 与 `41-testing-strategy.md` 可直接按统一交互规范落地；D5 进入“视觉风格与运营文档”收尾阶段。
+- 状态：生效
+
 - 变更：完成并落地 `docs/10_game_design/45-risk-register.md` v1.0（风险分级与时效、量化评分模型、Top10 风险台账、门禁映射、处置与归档流程）。
 - 原因：D4.2 尚缺风险台账与可执行门禁映射，发布阶段缺少统一的风险识别/响应/回滚判定依据。
 - 影响：D4.2 文档阶段闭合，`44-release-plan-and-milestones.md` 可直接按风险等级执行 Go/No-Go；后续 D5 可在同一风险口径下推进体验与运营文档。
