@@ -204,3 +204,15 @@
 - 复评审结论：通过（与 D4.1 阶段一致，未引入范围漂移，可直接衔接 `42-observability-and-logs.md`）。
 - 需用户拍板：无新增（继续沿用 `09-open-questions.md` 的 `Q-001` 默认口径）。
 - 证据文件：`docs/10_game_design/41-testing-strategy.md`、`docs/00_management/03-execution-plan.md`、`docs/00_management/05-scope-change-log.md`
+
+### 2026-03-07 07:00（Asia/Shanghai）
+- 执行项：完成 `docs/10_game_design/42-observability-and-logs.md` v1.0，补齐日志分层、结构化字段、脱敏留存、指标与告警阈值、Runbook 与 DoD。
+- 评审发现：
+  1) 原文档为占位稿，缺少可执行观测基线，无法支撑 D4.1 阶段落地；
+  2) 初稿自评审发现“日志留存策略与告警阈值”未显式量化，执行时仍有口径歧义。
+- 自动修正：
+  1) 重构为可执行文档并对齐 `32/34/41` 约束，补齐统一上下文字段与链路耗时分段；
+  2) 明确留存时长（7/14/30 天）与首版告警阈值（P1/P2/P3），消除运维与测试口径分叉。
+- 复评审结论：通过（与 D4.1 阶段一致，未引入范围漂移，可直接衔接 `43-security-and-cheat-prevention.md`）。
+- 需用户拍板：无新增（继续沿用 `09-open-questions.md` 的 `Q-001` 默认口径）。
+- 证据文件：`docs/10_game_design/42-observability-and-logs.md`、`docs/00_management/03-execution-plan.md`、`docs/00_management/05-scope-change-log.md`
