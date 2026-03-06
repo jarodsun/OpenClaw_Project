@@ -78,3 +78,8 @@
 - 原因：D3.1 缺少总体架构蓝图，导致前后端/数据库/API 文档缺乏统一约束
 - 影响：`31-frontend-nextjs-architecture.md`、`32-backend-fastapi-architecture.md`、`33-database-sqlite3-schema.md`、`34-api-contract.md`、`35-save-and-sync-strategy.md` 可按统一边界推进
 - 状态：生效
+
+- 变更：完成并落地 `docs/10_game_design/31-frontend-nextjs-architecture.md` v1.0（前端分层、路由渲染策略、状态管理、BFF 约束、性能与埋点基线）
+- 原因：D3.1 缺少前端实现蓝图，导致页面分层、状态流转与接口编排口径不统一
+- 影响：`34-api-contract.md`、`35-save-and-sync-strategy.md`、`41-testing-strategy.md` 可基于统一前端约束继续推进
+- 状态：生效

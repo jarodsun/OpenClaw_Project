@@ -120,3 +120,15 @@
 - 复评审结论：通过（与 D3.1 阶段一致，未引入范围漂移，可直接衔接 `31~35` 文档）。
 - 需用户拍板：无新增（继续沿用 `09-open-questions.md` 的 `Q-001` 默认口径）。
 - 证据文件：`docs/10_game_design/30-architecture-overview.md`、`docs/00_management/03-execution-plan.md`、`docs/00_management/05-scope-change-log.md`
+
+### 2026-03-07 05:50（Asia/Shanghai）
+- 执行项：完成 `docs/10_game_design/31-frontend-nextjs-architecture.md` v1.0，补齐前端分层、目录约束、渲染策略、状态管理、BFF 职责、性能与可观测基线。
+- 评审发现：
+  1) 原文档为占位稿，无法支撑 D3.1 到 D3.2 的接口与联调衔接；
+  2) 初稿缺少“更新时间”元信息，不利于评审追踪与版本对齐。
+- 自动修正：
+  1) 将占位稿重构为可执行前端架构文档，并补齐 DoD 与后续文档衔接；
+  2) 在文档头部新增“更新时间：2026-03-07”，统一管理文档可追溯性。
+- 复评审结论：通过（与 D3.1 阶段一致，未引入范围漂移，可直接衔接 `34/35/41` 文档）。
+- 需用户拍板：无新增（继续沿用 `09-open-questions.md` 的 `Q-001` 默认口径）。
+- 证据文件：`docs/10_game_design/31-frontend-nextjs-architecture.md`、`docs/00_management/03-execution-plan.md`、`docs/00_management/05-scope-change-log.md`
