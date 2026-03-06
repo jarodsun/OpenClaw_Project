@@ -4,8 +4,9 @@ import { useEffect, useMemo, useState } from 'react';
 
 const API_BASE = process.env.NEXT_PUBLIC_API_BASE || 'http://127.0.0.1:8000';
 
-async function getJson(path) {
-  const response = await fetch(`${API_BASE}${path}`, { cache: 'no-store' });
+async function getJson(path, token) {
+  const headers = token ? { 'x-admin-token': token } : undefined;
+  const response = await fetch(`${API_BASE}${path}`, { cache: 'no-store', headers });
   if (!response.ok) {
     throw new Error(`请求失败: ${path} (${response.status})`);
   }
@@ -17,6 +18,7 @@ export default function AdminPage() {
   const [error, setError] = useState('');
   const [sources, setSources] = useState([]);
   const [jobStatus, setJobStatus] = useState(null);
+  const [token, setToken] = useState('');
 
   const enabledCount = useMemo(() => sources.filter((item) => item.enabled).length, [sources]);
 
@@ -25,8 +27,8 @@ export default function AdminPage() {
     setError('');
     try {
       const [sourcesResult, jobsResult] = await Promise.all([
-        getJson('/api/admin/sources'),
-        getJson('/api/admin/jobs/status')
+        getJson('/api/admin/sources', token),
+        getJson('/api/admin/jobs/status', token)
       ]);
       setSources(sourcesResult.items || []);
       setJobStatus(jobsResult);
@@ -45,9 +47,17 @@ export default function AdminPage() {
     <main>
       <h1>管理面板</h1>
       <div className="card">
-        <button onClick={loadData} disabled={loading}>
-          {loading ? '刷新中...' : '刷新状态'}
-        </button>
+        <div className="filters">
+          <input
+            type="password"
+            placeholder="管理员 Token（可选）"
+            value={token}
+            onChange={(event) => setToken(event.target.value)}
+          />
+          <button onClick={loadData} disabled={loading}>
+            {loading ? '刷新中...' : '刷新状态'}
+          </button>
+        </div>
         <p>API Base: {API_BASE}</p>
         {error ? <p style={{ color: '#b91c1c' }}>{error}</p> : null}
       </div>

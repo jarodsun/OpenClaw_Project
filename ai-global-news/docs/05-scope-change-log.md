@@ -269,3 +269,10 @@
 - 现象：尝试使用 `edit` 精确替换 `memory/projects.md` 时返回 `Could not find the exact text`。
 - 根因：目标文本与当前文件内容存在细微差异，导致精确匹配失败。
 - 处理：按容错策略回退为 `exec + heredoc` 全量写入，进度与阻塞信息已成功更新。
+
+### 2026-03-06 22:27（执行问题与修复）
+
+- 时间：2026-03-06 22:27 CST
+- 现象：执行 `exec + apply_patch` 修改 `frontend/app/admin/page.js` 时，终端报错 `command not found: apply_patch`。
+- 根因：当前终端环境未提供 `apply_patch` 可执行命令。
+- 处理：按容错策略回退为 `exec + cat/heredoc` 重写目标文件，已完成请求地址修复与 token 请求头保留。
