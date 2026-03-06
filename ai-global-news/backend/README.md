@@ -66,18 +66,18 @@ FastAPI 后端骨架。
   - 支持 `hn.algolia.com` JSON 与 arXiv Atom API 解析
   - 输出统一 `CollectedArticle` 列表
 - 调度执行：`app/services/ingest_scheduler.py`
-  - 已接入 `rss + api` 来源执行链路
-  - 保留 `web` 来源为后续阶段接入
+  - 已接入 `rss + api + web` 来源执行链路
+  - 支持手动触发接口：`GET /jobs/ingest/run-once`
   - 入库失败重试支持指数退避（`AIGN_INGEST_DB_BACKOFF_SECONDS`）
-  - 运行结果新增 `db_retried`、`failed_writes` 指标
+  - 运行结果包含重试与失败写入统计（如 `db_retried`、`failed_writes`）
 
 ## 首批 12 来源种子数据（Phase 2 推进）
 
 - 来源定义：`app/collectors/sources.py`
 - 入库脚本：`scripts/seed_high_priority_sources.py`
 - 执行方式（在 `backend/` 目录）：
-  - `python -m app.main`（可选，先验证环境）
-  - `python scripts/seed_high_priority_sources.py`
+  - `python3 -m app.main`（可选，先验证环境）
+  - `python3 scripts/seed_high_priority_sources.py`
 
 脚本会按来源名称进行幂等更新：
 - 新来源不存在时创建
