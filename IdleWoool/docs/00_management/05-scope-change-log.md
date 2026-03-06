@@ -88,3 +88,8 @@
 - 原因：D3.1 缺少后端实现蓝图，导致接口契约、数据库设计与结算一致性约束无法收敛
 - 影响：`33-database-sqlite3-schema.md`、`34-api-contract.md`、`35-save-and-sync-strategy.md`、`41-testing-strategy.md` 可按统一后端约束继续推进
 - 状态：生效
+
+- 变更：完成并落地 `docs/10_game_design/33-database-sqlite3-schema.md` v1.0（核心表结构、索引策略、事务约束、幂等记录、迁移与容量基线）
+- 原因：D3.1 缺少数据库实现基线，导致 API 契约与存档同步文档无法收敛到可实现字段模型
+- 影响：`34-api-contract.md`、`35-save-and-sync-strategy.md`、`41-testing-strategy.md` 可按统一数据模型继续推进
+- 状态：生效
