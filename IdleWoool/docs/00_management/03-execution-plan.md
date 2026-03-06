@@ -20,7 +20,7 @@
 
 ### D2.2 系统与数值
 - [x] 完成 `docs/10_game_design/10-system-combat-and-progression.md`
-- [ ] 完成 `docs/10_game_design/11-system-professions-and-skills.md`
+- [x] 完成 `docs/10_game_design/11-system-professions-and-skills.md`
 - [ ] 完成 `docs/10_game_design/12-system-equipment-and-loot.md`
 - [ ] 完成 `docs/10_game_design/13-system-offline-rewards.md`
 - [ ] 完成 `docs/10_game_design/20-balance-framework.md`

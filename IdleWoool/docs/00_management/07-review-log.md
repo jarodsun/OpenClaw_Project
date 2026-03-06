@@ -49,3 +49,15 @@
 - 需用户拍板：无新增（继续沿用 `Q-001` 默认口径）。
 - 证据文件：`docs/10_game_design/10-system-combat-and-progression.md`、`docs/00_management/03-execution-plan.md`、`docs/00_management/05-scope-change-log.md`
 
+### 2026-03-07 04:50（Asia/Shanghai）
+- 执行项：完成 `docs/10_game_design/11-system-professions-and-skills.md` v1.0，补齐职业定位、技能树结构、解锁/升级规则、技能结算口径、配置约束与验收标准。
+- 评审发现：
+  1) 原文档为占位内容，缺少可执行规则，无法直接用于接口与测试设计；
+  2) 初稿中技能结算策略描述偏抽象，存在前后端理解分歧风险。
+- 自动修正：
+  1) 将文档重构为目标-规则-结算-配置-验收的可执行结构；
+  2) 明确“伤害被动快照、防御被动实时”的默认口径，并指定在 `34-api-contract.md` 固化字段。
+- 复评审结论：通过（与 D2.2 阶段一致，未引入范围漂移，可直接衔接 `12/20/34` 文档）。
+- 需用户拍板：无新增（继续沿用 `Q-001` 默认口径）。
+- 证据文件：`docs/10_game_design/11-system-professions-and-skills.md`、`docs/00_management/03-execution-plan.md`、`docs/00_management/05-scope-change-log.md`
+

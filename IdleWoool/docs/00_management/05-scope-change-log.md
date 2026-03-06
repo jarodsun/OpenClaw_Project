@@ -48,3 +48,8 @@
 - 原因：D2.2 系统与数值缺少可执行基线，无法稳定衔接 API 与测试文档
 - 影响：后续可直接推进 `11/12/13` 系统文档与 `34-api-contract.md`、`41-testing-strategy.md`
 - 状态：生效
+
+- 变更：完成并落地 `docs/10_game_design/11-system-professions-and-skills.md` v1.0（职业定位、技能树结构、解锁与升级规则、技能结算口径、配置约束与验收标准）
+- 原因：D2.2 缺少职业与技能的实现口径，无法稳定衔接装备、平衡与接口文档
+- 影响：`12-system-equipment-and-loot.md`、`20-balance-framework.md`、`34-api-contract.md` 可按统一口径继续推进
+- 状态：生效
