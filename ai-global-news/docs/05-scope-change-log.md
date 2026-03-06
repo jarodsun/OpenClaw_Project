@@ -276,3 +276,10 @@
 - 现象：执行 `exec + apply_patch` 修改 `frontend/app/admin/page.js` 时，终端报错 `command not found: apply_patch`。
 - 根因：当前终端环境未提供 `apply_patch` 可执行命令。
 - 处理：按容错策略回退为 `exec + cat/heredoc` 重写目标文件，已完成请求地址修复与 token 请求头保留。
+
+### 2026-03-06 22:06（执行问题与修复）
+
+- 时间：2026-03-06 22:06 CST
+- 现象：执行 `exec + apply_patch` 修改 `backend/app/core/config.py` 时，终端报错 `command not found: apply_patch`。
+- 根因：当前终端环境未提供 `apply_patch` 可执行命令。
+- 处理：按容错策略立即回退为 `exec + perl/sed` 直改文件方式，继续完成本次“管理接口鉴权”任务交付。

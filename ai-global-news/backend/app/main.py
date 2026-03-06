@@ -5,7 +5,7 @@ import time
 from contextlib import asynccontextmanager
 from datetime import UTC, datetime
 
-from fastapi import Depends, FastAPI, HTTPException, Query, Request
+from fastapi import Depends, FastAPI, Header, HTTPException, Query, Request
 from sqlalchemy import func, or_, select
 from sqlalchemy.orm import Session
 
@@ -76,6 +76,13 @@ def get_db() -> Session:
         yield db
     finally:
         db.close()
+
+
+def verify_admin_token(x_admin_token: str | None = Header(default=None)) -> None:
+    if not settings.admin_api_token:
+        return
+    if x_admin_token != settings.admin_api_token:
+        raise HTTPException(status_code=401, detail="admin token invalid")
 
 
 def _parse_tags(raw_tags: str | None) -> list[str]:
@@ -161,7 +168,10 @@ def article_detail(article_id: int, db: Session = Depends(get_db)) -> dict[str, 
 
 
 @app.get('/api/admin/sources')
-def admin_list_sources(db: Session = Depends(get_db)) -> dict[str, object]:
+def admin_list_sources(
+    db: Session = Depends(get_db),
+    _: None = Depends(verify_admin_token),
+) -> dict[str, object]:
     rows = db.execute(select(Source).order_by(Source.name.asc())).scalars().all()
     return {
         'total': len(rows),
@@ -182,7 +192,7 @@ def admin_list_sources(db: Session = Depends(get_db)) -> dict[str, object]:
 
 
 @app.get('/api/admin/jobs/status')
-def admin_jobs_status() -> dict[str, object]:
+def admin_jobs_status(_: None = Depends(verify_admin_token)) -> dict[str, object]:
     task = scheduler._task
     scheduler_running = bool(task and not task.done())
     return {

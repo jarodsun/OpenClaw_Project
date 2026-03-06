@@ -27,6 +27,7 @@ class Settings(BaseSettings):
     ingest_collect_backoff_seconds: float = Field(default=1.0)
     ingest_db_max_attempts: int = Field(default=2)
     ingest_db_backoff_seconds: float = Field(default=0.5)
+    admin_api_token: str | None = Field(default=None)
 
 
 class DevSettings(Settings):
