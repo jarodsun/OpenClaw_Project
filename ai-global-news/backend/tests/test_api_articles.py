@@ -67,6 +67,18 @@ class ArticleApiTests(unittest.TestCase):
                         published_at=datetime(2026, 3, 6, 11, 0, 0),
                         ingested_at=datetime(2026, 3, 6, 11, 5, 0),
                     ),
+                    Article(
+                        source_name='OpenAI',
+                        title='OpenAI Agent 平台更新',
+                        url='https://example.com/a3',
+                        author='team',
+                        language='zh',
+                        tags='["llm", "infra"]',
+                        summary='第三条摘要。',
+                        content_raw='正文C',
+                        published_at=datetime(2026, 3, 6, 12, 0, 0),
+                        ingested_at=datetime(2026, 3, 6, 12, 5, 0),
+                    ),
                 ]
             )
             db.commit()
@@ -91,6 +103,24 @@ class ArticleApiTests(unittest.TestCase):
         payload = response.json()
         self.assertEqual(payload['total'], 1)
         self.assertEqual(payload['items'][0]['title'], 'Claude 新版本发布')
+
+    def test_list_articles_with_combined_filters_and_order(self) -> None:
+        response = self.client.get(
+            '/api/articles',
+            params={
+                'source': 'OpenAI',
+                'tag': 'llm',
+                'published_from': '2026-03-06T09:00:00',
+                'published_to': '2026-03-06T12:30:00',
+            },
+        )
+        self.assertEqual(response.status_code, 200)
+        payload = response.json()
+        self.assertEqual(payload['total'], 2)
+        self.assertEqual(
+            [item['title'] for item in payload['items']],
+            ['OpenAI Agent 平台更新', 'OpenAI 发布多模态 Agent'],
+        )
 
     def test_article_detail_success(self) -> None:
         response = self.client.get('/api/articles/1')

@@ -234,3 +234,17 @@
 - 现象：API 单测首次运行报错 `sqlite3.OperationalError: no such table: articles`。
 - 根因：测试使用内存 SQLite 时，每连接独立数据库导致表结构未共享到请求线程。
 - 处理：改为 `sqlite+pysqlite:// + StaticPool` 共享连接池，重跑测试通过。
+
+### 2026-03-06 21:26（执行问题与修复）
+
+- 时间：2026-03-06 21:26 CST
+- 现象：执行 `exec + apply_patch` 修改 `backend/tests/test_api_articles.py` 时，终端报错 `command not found: apply_patch`。
+- 根因：当前终端环境未提供 `apply_patch` 可执行命令。
+- 处理：按容错策略回退为可用文件编辑方式继续完成测试用例补充，未中断任务。
+
+### 2026-03-06 21:27（执行问题与修复）
+
+- 时间：2026-03-06 21:27 CST
+- 现象：执行 `python3 -m unittest backend/tests/test_api_articles.py` 报错 `ModuleNotFoundError: No module named 'app'`。
+- 根因：未设置 `PYTHONPATH=backend`，导致测试运行时找不到后端包路径。
+- 处理：改用 `PYTHONPATH=backend python3 -m unittest backend/tests/test_api_articles.py` 重跑，验证通过。
