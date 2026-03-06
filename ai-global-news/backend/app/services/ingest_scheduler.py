@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import asyncio
+import json
 import logging
 import time
 
@@ -14,6 +15,7 @@ from app.collectors.web import WEBCollector
 from app.core.config import get_settings
 from app.db.session import SessionLocal
 from app.models.article import Article
+from app.services.classifier import classify_tags
 from app.services.dedup import Deduplicator
 from app.services.text_normalizer import normalize_text
 
@@ -136,14 +138,20 @@ def run_ingest_once() -> dict[str, int]:
                     skipped += 1
                     continue
 
+                normalized_title = normalize_text(item.title) or item.title
+                normalized_summary = normalize_text(item.summary)
+                normalized_content = normalize_text(item.content_raw)
+                tags = classify_tags(normalized_title, normalized_summary, normalized_content)
+
                 db.add(
                     Article(
                         source_name=item.source_name,
-                        title=normalize_text(item.title) or item.title,
+                        title=normalized_title,
                         url=snapshot.canonical_url,
                         author=normalize_text(item.author),
                         language=normalize_text(item.language),
-                        content_raw=normalize_text(item.content_raw),
+                        tags=json.dumps(tags, ensure_ascii=False),
+                        content_raw=normalized_content,
                         published_at=item.published_at,
                     )
                 )

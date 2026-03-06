@@ -27,7 +27,8 @@
   - 进展：已在入库链路接入 text_normalizer，并补充单元测试（tests/test_text_normalizer.py）。
 - [x] 去重策略（URL + SimHash + 标题相似度）
   - 进展：已在 ingest 调度接入 `Deduplicator`（URL 规范化 + 标题归一化 + SimHash 汉明距离阈值），并补充单测 `tests/test_dedup.py`。
-- [ ] 标签分类（规则 + LLM）
+- [x] 标签分类（规则 + LLM）
+  - 进展：已新增规则分类器 `classifier.py`（LLM/agent/infra/research/product/policy/general），并在 ingest 入库阶段落库 `articles.tags`（JSON 文本），补充单测 `tests/test_classifier.py`。
 - [ ] 摘要生成（失败降级与缓存）
 
 ## Phase 4：API 与前端（第 11-15 天）

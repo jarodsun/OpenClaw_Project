@@ -185,3 +185,17 @@
 - 现象：执行 `exec + apply_patch` 修改计划文档时报错 `command not found: apply_patch`；执行 `pytest` 报错 `command not found: pytest`；首次执行 `python3 -m unittest tests/test_dedup.py` 报错 `No module named 'tests/test_dedup'`。
 - 根因：当前环境未提供 `apply_patch` 可执行命令，且未安装 pytest；另外 unittest 模块路径使用了文件路径写法。
 - 处理：按容错策略改为 `exec + python3` 直接修改文档；测试回退为内置 `unittest` 并在 `backend/` 目录使用模块路径 `python3 -m unittest tests.test_dedup`，验证通过。
+
+### 2026-03-06 20:25（执行问题与修复）
+
+- 时间：2026-03-06 20:25 CST
+- 现象：执行仓库扫描命令 `rg --files` 时报错 `command not found: rg`。
+- 根因：当前运行环境未安装 ripgrep。
+- 处理：按容错策略立即回退为 `find` 完成文件检索并继续本次任务。
+
+### 2026-03-06 20:29（执行问题与修复）
+
+- 时间：2026-03-06 20:29 CST
+- 现象：执行 `python3 -m unittest tests.test_classifier ...` 首轮失败，断言 `product` 标签未命中。
+- 根因：规则分类器 `product` 关键词仅含英文词，未覆盖“发布/上线/更新”等中文高频词。
+- 处理：补充中文关键词后重跑同一测试集通过（8/8）。
