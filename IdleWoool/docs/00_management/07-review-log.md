@@ -240,3 +240,15 @@
 - 复评审结论：通过（与 D4.2 阶段一致，未引入范围漂移，可直接衔接 `45-risk-register.md`）。
 - 需用户拍板：无新增（继续沿用 `09-open-questions.md` 的 `Q-001` 默认口径）。
 - 证据文件：`docs/10_game_design/44-release-plan-and-milestones.md`、`docs/00_management/03-execution-plan.md`、`docs/00_management/05-scope-change-log.md`
+
+### 2026-03-07 07:30（Asia/Shanghai）
+- 执行项：完成 `docs/10_game_design/45-risk-register.md` v1.0，补齐风险分级与时效、Top10 风险台账、门禁映射、响应与归档流程。
+- 评审发现：
+  1) 首版虽有分级定义，但缺少统一量化评分模型，跨角色评审时存在等级判定偏差风险；
+  2) D4.2 进度尚未在执行计划勾选，管理面留痕不完整。
+- 自动修正：
+  1) 在 `45-risk-register.md` 新增“2.4 量化评分模型（Impact × Probability）”与冲突从高处理原则；
+  2) 同步勾选 `03-execution-plan.md` 的 `45-risk-register.md` 完成状态，并在 `05-scope-change-log.md` 追加变更记录。
+- 复评审结论：通过（与 D4.2 阶段一致，文档可直接用于 Go/No-Go 风险评审，未引入范围漂移）。
+- 需用户拍板：无新增（继续沿用 `09-open-questions.md` 现有 `Q-001`）。
+- 证据文件：`docs/10_game_design/45-risk-register.md`、`docs/00_management/03-execution-plan.md`、`docs/00_management/05-scope-change-log.md`
