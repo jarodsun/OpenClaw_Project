@@ -38,3 +38,10 @@
 - 现象：一次性执行“heredoc + && git commit”的复合命令时报 `parse error near '&&'`。
 - 根因：zsh 对该段复合命令的换行拼接解析失败。
 - 处理：拆分为多条独立命令（清理缓存、写 `.gitignore`、再 `git add/commit`）后成功。
+
+### 2026-03-06 18:05（执行问题与修复）
+
+- 时间：2026-03-06 18:05 CST
+- 现象：执行仓库扫描命令 `rg --files` 时报错 `command not found: rg`。
+- 根因：当前运行环境未安装 ripgrep。
+- 处理：立即切换为 `find . -type f` 完成文件枚举，不阻塞本次任务推进。

@@ -28,4 +28,9 @@ FastAPI 后端骨架。
   - 默认开发：`sqlite:///./ai_global_news_dev.db`
   - 生产建议：`mysql+pymysql://user:pass@host:3306/db`
 - 配置入口：`app/core/config.py`
-- 运行时可通过 `/health` 返回的 `env` 字段确认当前环境。
+- 运行时可通过 `/health` 返回的 `env`、`version`、`uptime_seconds` 字段确认当前状态。
+
+## 基础日志
+
+- 启动时根据 `AIGN_LOG_LEVEL` 初始化标准库 logging。
+- 每个 HTTP 请求输出方法、路径、状态码、耗时（毫秒）。
