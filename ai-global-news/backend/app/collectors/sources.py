@@ -14,16 +14,16 @@ HIGH_PRIORITY_SOURCES: tuple[SourceConfig, ...] = (
     SourceConfig(
         name='Google DeepMind Blog',
         category='official_blog',
-        homepage_url='https://deepmind.google/discover/blog/',
-        endpoint='https://deepmind.google/discover/blog/rss.xml',
-        kind=CollectorKind.RSS,
+        homepage_url='https://deepmind.google/blog/',
+        endpoint='https://deepmind.google/blog/',
+        kind=CollectorKind.WEB,
     ),
     SourceConfig(
         name='Anthropic News',
         category='official_blog',
         homepage_url='https://www.anthropic.com/news',
-        endpoint='https://www.anthropic.com/news/rss.xml',
-        kind=CollectorKind.RSS,
+        endpoint='https://www.anthropic.com/news',
+        kind=CollectorKind.WEB,
     ),
     SourceConfig(
         name='Meta AI Blog',
@@ -35,8 +35,8 @@ HIGH_PRIORITY_SOURCES: tuple[SourceConfig, ...] = (
     SourceConfig(
         name='Azure AI Blog',
         category='official_blog',
-        homepage_url='https://azure.microsoft.com/blog/',
-        endpoint='https://azure.microsoft.com/en-us/blog/topics/ai-machine-learning/feed/',
+        homepage_url='https://azure.microsoft.com/en-us/blog/category/ai-machine-learning/',
+        endpoint='https://azure.microsoft.com/en-us/blog/category/ai-machine-learning/feed/',
         kind=CollectorKind.RSS,
     ),
     SourceConfig(
@@ -85,8 +85,8 @@ HIGH_PRIORITY_SOURCES: tuple[SourceConfig, ...] = (
         name='The Verge AI',
         category='media',
         homepage_url='https://www.theverge.com/ai-artificial-intelligence',
-        endpoint='https://www.theverge.com/ai-artificial-intelligence/rss/index.xml',
-        kind=CollectorKind.RSS,
+        endpoint='https://www.theverge.com/ai-artificial-intelligence',
+        kind=CollectorKind.WEB,
     ),
 )
 
