@@ -58,3 +58,8 @@
 - 原因：D2.2 缺少装备与掉落统一口径，导致后续平衡与接口字段无法稳定收口
 - 影响：`20-balance-framework.md`、`21-content-config-schema.md`、`34-api-contract.md` 可按统一规则继续推进
 - 状态：生效
+
+- 变更：完成并落地 `docs/10_game_design/13-system-offline-rewards.md` v1.0（离线时长计量、收益公式、掉落折算、幂等发放、异常降级与 DoD）
+- 原因：D2.2 中离线收益规则缺失，无法闭合“在线/离线循环”与后续平衡、接口设计
+- 影响：`20-balance-framework.md`、`21-content-config-schema.md`、`34-api-contract.md` 可基于统一离线结算口径继续推进
+- 状态：生效

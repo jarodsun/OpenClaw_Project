@@ -22,7 +22,7 @@
 - [x] 完成 `docs/10_game_design/10-system-combat-and-progression.md`
 - [x] 完成 `docs/10_game_design/11-system-professions-and-skills.md`
 - [x] 完成 `docs/10_game_design/12-system-equipment-and-loot.md`
-- [ ] 完成 `docs/10_game_design/13-system-offline-rewards.md`
+- [x] 完成 `docs/10_game_design/13-system-offline-rewards.md`
 - [ ] 完成 `docs/10_game_design/20-balance-framework.md`
 - [ ] 完成 `docs/10_game_design/21-content-config-schema.md`
 

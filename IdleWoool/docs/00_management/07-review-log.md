@@ -73,3 +73,14 @@
 - 需用户拍板：无新增（继续沿用 `Q-001` 默认口径）。
 - 证据文件：`docs/10_game_design/12-system-equipment-and-loot.md`、`docs/00_management/03-execution-plan.md`、`docs/00_management/05-scope-change-log.md`
 
+### 2026-03-07 05:10（Asia/Shanghai）
+- 执行项：完成 `docs/10_game_design/13-system-offline-rewards.md` v1.0，补齐离线时长计量、收益公式、掉落折算、幂等发放、异常降级与验收标准。
+- 评审发现：
+  1) 占位稿缺少离线收益统一口径，无法直接支撑后端结算与联调；
+  2) 初版接口字段描述包含 `last_online_at` 客户端入参，存在被篡改风险与职责边界不清问题。
+- 自动修正：
+  1) 将文档重构为可执行规则结构（目标/规则/异常/配置/DoD/衔接）；
+  2) 修正接口约束为“离线开始时间仅由服务端推导”，客户端时间仅用于排障展示。
+- 复评审结论：通过（与 D2.2 阶段一致，未引入范围漂移，且可直接衔接 `20/21/34` 文档）。
+- 需用户拍板：无新增（继续沿用 `09-open-questions.md` 的 `Q-001` 默认口径）。
+- 证据文件：`docs/10_game_design/13-system-offline-rewards.md`、`docs/00_management/03-execution-plan.md`、`docs/00_management/05-scope-change-log.md`
