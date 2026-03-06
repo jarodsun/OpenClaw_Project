@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from 'react';
 
 const API_BASE = process.env.NEXT_PUBLIC_API_BASE || 'http://127.0.0.1:8000';
+const TOKEN_STORAGE_KEY = 'ai_global_news_admin_token';
 
 async function getJson(path, token) {
   const headers = token ? { 'x-admin-token': token } : undefined;
@@ -15,7 +16,9 @@ async function getJson(path, token) {
 
 export default function AdminPage() {
   const [loading, setLoading] = useState(true);
+  const [triggering, setTriggering] = useState(false);
   const [error, setError] = useState('');
+  const [triggerMessage, setTriggerMessage] = useState('');
   const [sources, setSources] = useState([]);
   const [jobStatus, setJobStatus] = useState(null);
   const [token, setToken] = useState('');
@@ -39,6 +42,37 @@ export default function AdminPage() {
     }
   }
 
+  async function triggerIngest() {
+    setTriggering(true);
+    setTriggerMessage('');
+    try {
+      const result = await getJson('/jobs/ingest/run-once', token);
+      setTriggerMessage(`触发成功：新增 ${result.inserted ?? 0}，重复 ${result.duplicates ?? 0}，失败源 ${result.failed_sources ?? 0}`);
+      await loadData();
+    } catch (err) {
+      setTriggerMessage(err.message || '触发失败');
+    } finally {
+      setTriggering(false);
+    }
+  }
+
+  useEffect(() => {
+    if (typeof window === 'undefined') {
+      return;
+    }
+    const savedToken = window.localStorage.getItem(TOKEN_STORAGE_KEY) || '';
+    if (savedToken) {
+      setToken(savedToken);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') {
+      return;
+    }
+    window.localStorage.setItem(TOKEN_STORAGE_KEY, token);
+  }, [token]);
+
   useEffect(() => {
     loadData();
   }, []);
@@ -53,13 +87,23 @@ export default function AdminPage() {
             placeholder="管理员 Token（可选）"
             value={token}
             onChange={(event) => setToken(event.target.value)}
+            onKeyDown={(event) => {
+              if (event.key === 'Enter') {
+                loadData();
+              }
+            }}
           />
           <button onClick={loadData} disabled={loading}>
             {loading ? '刷新中...' : '刷新状态'}
           </button>
+          <button onClick={triggerIngest} disabled={triggering}>
+            {triggering ? '触发中...' : '手动触发采集'}
+          </button>
         </div>
         <p>API Base: {API_BASE}</p>
         {error ? <p style={{ color: '#b91c1c' }}>{error}</p> : null}
+        {error.includes('(401)') ? <p style={{ color: '#b45309' }}>管理员接口鉴权失败，请检查 Token。</p> : null}
+        {triggerMessage ? <p>{triggerMessage}</p> : null}
       </div>
 
       <div className="card">

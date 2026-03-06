@@ -283,3 +283,10 @@
 - 现象：执行 `exec + apply_patch` 修改 `backend/app/core/config.py` 时，终端报错 `command not found: apply_patch`。
 - 根因：当前终端环境未提供 `apply_patch` 可执行命令。
 - 处理：按容错策略立即回退为 `exec + perl/sed` 直改文件方式，继续完成本次“管理接口鉴权”任务交付。
+
+### 2026-03-06 23:37（执行问题与修复）
+
+- 时间：2026-03-06 23:37 CST
+- 现象：执行 `npm -C frontend run lint` 报错 `Missing script: "lint"`。
+- 根因：`frontend/package.json` 未定义 `lint` 脚本，仅包含 `dev/build/start`。
+- 处理：改为执行 `npm -C frontend run build` 作为本轮前端改动的可执行校验；后续可补充 ESLint 配置与 `lint` 脚本。
