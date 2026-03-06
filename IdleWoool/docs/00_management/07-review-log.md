@@ -168,3 +168,15 @@
 - 复评审结论：通过（与 D3.2 阶段一致，未引入范围漂移，可直接衔接 `35/41` 文档与实现拆分）。
 - 需用户拍板：无新增（继续沿用 `09-open-questions.md` 的 `Q-001` 默认口径）。
 - 证据文件：`docs/10_game_design/34-api-contract.md`、`docs/00_management/03-execution-plan.md`、`docs/00_management/05-scope-change-log.md`
+
+### 2026-03-07 06:30（Asia/Shanghai）
+- 执行项：完成 `docs/10_game_design/35-save-and-sync-strategy.md` v1.0，补齐存档权威边界、保存触发策略、在线/离线同步流程、版本冲突处理、幂等防重、异常降级与 DoD。
+- 评审发现：
+  1) 原文档为占位稿，无法支撑 D3.2 阶段“接口->数据->同步”闭环；
+  2) 初版保存策略中“页面隐藏即提交”未限制为“尝试提交”，在弱网环境下表达过强。
+- 自动修正：
+  1) 重构文档为可执行结构并对齐 `13/33/34` 口径；
+  2) 将会话结束策略修正为“进入隐藏态时尝试提交一次”，并在异常章节补充超时后“查询再重试”规则。
+- 复评审结论：通过（与 D3.2 阶段一致，未引入范围漂移，可直接衔接 `41-testing-strategy.md`）。
+- 需用户拍板：无新增（继续沿用 `09-open-questions.md` 的 `Q-001` 默认口径）。
+- 证据文件：`docs/10_game_design/35-save-and-sync-strategy.md`、`docs/00_management/03-execution-plan.md`、`docs/00_management/05-scope-change-log.md`

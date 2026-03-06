@@ -41,7 +41,7 @@
 
 ### D3.2 接口与数据流
 - [x] 完成 `docs/10_game_design/34-api-contract.md`
-- [ ] 完成 `docs/10_game_design/35-save-and-sync-strategy.md`
+- [x] 完成 `docs/10_game_design/35-save-and-sync-strategy.md`
 
 ## Phase D4：工程交付与上线准备文档
 
