@@ -241,6 +241,18 @@
 - 需用户拍板：无新增（继续沿用 `09-open-questions.md` 的 `Q-001` 默认口径）。
 - 证据文件：`docs/10_game_design/44-release-plan-and-milestones.md`、`docs/00_management/03-execution-plan.md`、`docs/00_management/05-scope-change-log.md`
 
+### 2026-03-07 07:50（Asia/Shanghai）
+- 执行项：完成 `docs/10_game_design/51-audio-visual-style-guide.md` v1.0，补齐视觉关键词、色彩/排版规范、战斗动效分级、音频分层、资源预算、降级策略与 DoD。
+- 评审发现：
+  1) 初版仅覆盖音效触发与混音，未显式约束“静音/听障场景”的关键反馈可达性；
+  2) D5 进度尚未在执行计划中勾选，管理留痕不完整。
+- 自动修正：
+  1) 在文档新增“4.4 音频可访问性”，要求关键音频反馈必须有视觉等价提示，且静音不影响核心流程判断；
+  2) 同步勾选 `03-execution-plan.md` 中 `51-audio-visual-style-guide.md` 完成状态，并更新 `05-scope-change-log.md`。
+- 复评审结论：通过（与 D5 阶段一致，未引入范围漂移，可直接支撑实现、测试与发布门禁）。
+- 需用户拍板：无新增（继续沿用 `09-open-questions.md` 的 `Q-001` 默认口径）。
+- 证据文件：`docs/10_game_design/51-audio-visual-style-guide.md`、`docs/00_management/03-execution-plan.md`、`docs/00_management/05-scope-change-log.md`
+
 ### 2026-03-07 07:40（Asia/Shanghai）
 - 执行项：完成 `docs/10_game_design/50-ui-ux-guidelines.md` v1.0，补齐信息架构、关键页面、交互反馈、可访问性、前端实现约束与 DoD。
 - 评审发现：

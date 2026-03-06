@@ -58,7 +58,7 @@
 ## Phase D5：体验与运营文档
 
 - [x] 完成 `docs/10_game_design/50-ui-ux-guidelines.md`
-- [ ] 完成 `docs/10_game_design/51-audio-visual-style-guide.md`
+- [x] 完成 `docs/10_game_design/51-audio-visual-style-guide.md`
 - [ ] 完成 `docs/10_game_design/52-liveops-and-monetization.md`
 
 ## 每轮执行规则（自动执行版）

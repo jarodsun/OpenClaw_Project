@@ -14,6 +14,11 @@
 
 ### 2026-03-07
 
+- 变更：完成并落地 `docs/10_game_design/51-audio-visual-style-guide.md` v1.0（视觉关键词、色彩 Token、动效分级、音频分层、资源预算、降级策略与 DoD），并在评审后自动补齐音频可访问性条目。
+- 原因：D5 阶段缺少 A/V 可执行规范，视觉与音频资源无法与前端实现、测试门禁和发布预算形成统一约束。
+- 影响：D5 收敛到仅剩 `52-liveops-and-monetization.md`；`41-testing-strategy.md` 与 `44-release-plan-and-milestones.md` 可直接纳入 A/V 预算与可访问性检查。
+- 状态：生效
+
 - 变更：完成并落地 `docs/10_game_design/50-ui-ux-guidelines.md` v1.0（信息架构、关键页面规范、交互反馈、可访问性、前端实现约束与 DoD）。
 - 原因：D5 阶段缺少可执行 UI/UX 基线，前端页面实现与测试验收缺乏统一标准。
 - 影响：`31-frontend-nextjs-architecture.md` 与 `41-testing-strategy.md` 可直接按统一交互规范落地；D5 进入“视觉风格与运营文档”收尾阶段。
