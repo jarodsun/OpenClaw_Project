@@ -37,3 +37,15 @@
 - 需用户拍板：无新增（沿用 `09-open-questions.md` 现有 Q-001）。
 - 证据文件：`docs/10_game_design/03-feature-scope-mvp.md`、`docs/00_management/03-execution-plan.md`、`docs/00_management/05-scope-change-log.md`
 
+### 2026-03-07 04:40（Asia/Shanghai）
+- 执行项：完成 `docs/10_game_design/10-system-combat-and-progression.md` v1.0，补齐战斗计算顺序、伤害公式、成长曲线、战力公式、推进规则与验收标准。
+- 评审发现：
+  1) 占位文档缺少可实现口径，无法直接用于后端结算设计；
+  2) 初版小节层级存在 `##` 误用，影响结构一致性与可读性。
+- 自动修正：
+  1) 将占位稿升级为可执行系统文档，补齐配置入口与实现约束；
+  2) 将 `3.1~4.3` 小节统一修正为 `###` 层级，保持章节规范。
+- 复评审结论：通过（与 D2.2 阶段一致，未引入范围外内容，可直接衔接接口与测试文档）。
+- 需用户拍板：无新增（继续沿用 `Q-001` 默认口径）。
+- 证据文件：`docs/10_game_design/10-system-combat-and-progression.md`、`docs/00_management/03-execution-plan.md`、`docs/00_management/05-scope-change-log.md`
+

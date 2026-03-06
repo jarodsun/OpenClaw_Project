@@ -19,7 +19,7 @@
 - [x] 完成 `docs/10_game_design/02-game-design-core-loop.md`
 
 ### D2.2 系统与数值
-- [ ] 完成 `docs/10_game_design/10-system-combat-and-progression.md`
+- [x] 完成 `docs/10_game_design/10-system-combat-and-progression.md`
 - [ ] 完成 `docs/10_game_design/11-system-professions-and-skills.md`
 - [ ] 完成 `docs/10_game_design/12-system-equipment-and-loot.md`
 - [ ] 完成 `docs/10_game_design/13-system-offline-rewards.md`
