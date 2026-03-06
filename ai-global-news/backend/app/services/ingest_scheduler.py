@@ -5,6 +5,7 @@ import logging
 import time
 from sqlalchemy.exc import IntegrityError
 
+from app.collectors.api import APICollector
 from app.collectors.base import CollectorKind
 from app.collectors.rss import RSSCollector
 from app.collectors.sources import list_high_priority_sources
@@ -47,7 +48,15 @@ class IngestScheduler:
                 continue
 
 
-def _collect_with_retry(collector: RSSCollector, source, max_attempts: int, backoff_seconds: float):
+def _collector_for_kind(kind: CollectorKind):
+    if kind == CollectorKind.RSS:
+        return RSSCollector()
+    if kind == CollectorKind.API:
+        return APICollector()
+    return None
+
+
+def _collect_with_retry(collector, source, max_attempts: int, backoff_seconds: float):
     last_error: Exception | None = None
     for attempt in range(1, max_attempts + 1):
         try:
@@ -70,8 +79,7 @@ def _collect_with_retry(collector: RSSCollector, source, max_attempts: int, back
 
 
 def run_ingest_once() -> dict[str, int]:
-    collector = RSSCollector()
-    sources = [source for source in list_high_priority_sources() if source.kind == CollectorKind.RSS]
+    sources = [source for source in list_high_priority_sources() if source.kind in {CollectorKind.RSS, CollectorKind.API}]
 
     fetched = 0
     inserted = 0
@@ -81,6 +89,12 @@ def run_ingest_once() -> dict[str, int]:
 
     with SessionLocal() as db:
         for source in sources:
+            collector = _collector_for_kind(source.kind)
+            if collector is None:
+                logger.warning('No collector for source=%s kind=%s', source.name, source.kind)
+                failed_sources += 1
+                continue
+
             try:
                 articles, retried_count = _collect_with_retry(
                     collector=collector,

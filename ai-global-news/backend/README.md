@@ -45,7 +45,12 @@ FastAPI 后端骨架。
 - RSS 实现：`app/collectors/rss.py`
   - 基于标准库 `urllib + ElementTree` 拉取并解析 RSS
   - 输出统一 `CollectedArticle` 列表
-- 暂未接入调度与数据库写入，当前用于后续来源接入的接口基线。
+- API 实现：`app/collectors/api.py`
+  - 支持 `hn.algolia.com` JSON 与 arXiv Atom API 解析
+  - 输出统一 `CollectedArticle` 列表
+- 调度执行：`app/services/ingest_scheduler.py`
+  - 已接入 `rss + api` 来源执行链路
+  - 保留 `web` 来源为后续阶段接入
 
 ## 首批 12 来源种子数据（Phase 2 推进）
 
