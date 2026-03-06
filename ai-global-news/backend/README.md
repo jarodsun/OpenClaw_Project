@@ -51,6 +51,8 @@ FastAPI 后端骨架。
 - 调度执行：`app/services/ingest_scheduler.py`
   - 已接入 `rss + api` 来源执行链路
   - 保留 `web` 来源为后续阶段接入
+  - 入库失败重试支持指数退避（`AIGN_INGEST_DB_BACKOFF_SECONDS`）
+  - 运行结果新增 `db_retried`、`failed_writes` 指标
 
 ## 首批 12 来源种子数据（Phase 2 推进）
 

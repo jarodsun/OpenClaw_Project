@@ -85,6 +85,8 @@ def run_ingest_once() -> dict[str, int]:
     inserted = 0
     skipped = 0
     collect_retried = 0
+    db_retried = 0
+    failed_writes = 0
     failed_sources = 0
 
     with SessionLocal() as db:
@@ -140,15 +142,21 @@ def run_ingest_once() -> dict[str, int]:
                             exc,
                         )
                         if write_attempt == settings.ingest_db_max_attempts:
+                            failed_writes += 1
                             skipped += 1
+                        else:
+                            db_retried += 1
+                            time.sleep(settings.ingest_db_backoff_seconds * write_attempt)
 
     result = {
         'sources': len(sources),
         'failed_sources': failed_sources,
         'collect_retried': collect_retried,
+        'db_retried': db_retried,
         'fetched': fetched,
         'inserted': inserted,
         'skipped': skipped,
+        'failed_writes': failed_writes,
     }
     logger.info('Ingest cycle done: %s', result)
     return result
