@@ -24,3 +24,10 @@
 - 原因：原需求文档缺少评审闭环与可测口径
 - 影响：开发开始前需先按评审结论修订指标口径
 - 状态：已纳入 v1 基线
+
+### 2026-03-06 17:57（执行问题与修复）
+
+- 时间：2026-03-06 17:57 CST
+- 现象：按约定尝试使用 `exec + apply_patch` 修改项目文件时，终端返回 `command not found: apply_patch`。
+- 根因：当前运行环境未提供 `apply_patch` 可执行命令。
+- 处理：立即回退为 `exec` 下 `cat/heredoc` 覆写与新建文件策略，继续完成 MySQL 模型与 Alembic 迁移脚本落地；已通过 `python3 -m compileall app alembic` 验证语法。
