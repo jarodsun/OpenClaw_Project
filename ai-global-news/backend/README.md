@@ -30,10 +30,21 @@ FastAPI 后端骨架。
 - 配置入口：`app/core/config.py`
 - 运行时可通过 `/health` 返回的 `env`、`version`、`uptime_seconds` 字段确认当前状态。
 
-## 基础日志
+## 日志机制（结构化 + 分文件）
 
-- 启动时根据 `AIGN_LOG_LEVEL` 初始化标准库 logging。
-- 每个 HTTP 请求输出方法、路径、状态码、耗时（毫秒）。
+- 默认启用 JSON 结构化日志，公共字段包含：`ts`、`level`、`service`、`trace_id`、`event`、`message`、`extra`。
+- 日志目录：`AIGN_LOG_DIR`（默认 `backend/logs`）。
+- 日志轮转：`AIGN_LOG_MAX_BYTES`（默认 10MB）+ `AIGN_LOG_BACKUP_COUNT`（默认 7）。
+- 分文件输出：
+  - `app.log`：API 请求与应用日志
+  - `ingest.log`：采集链路（来源级成功/失败、重试、入库）
+  - `scheduler.log`：调度启动/停止与周期任务结果
+- 每次 API 请求会返回 `X-Trace-Id`，可用于全链路排查。
+
+常用查看命令：
+- `tail -f logs/app.log`
+- `tail -f logs/ingest.log`
+- `tail -f logs/scheduler.log`
 
 ## 文本清洗（Phase 3 启动）
 

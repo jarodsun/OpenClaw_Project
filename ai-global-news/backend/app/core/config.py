@@ -21,6 +21,10 @@ class Settings(BaseSettings):
     app_version: str = Field(default='0.1.0')
     debug: bool = Field(default=False)
     log_level: str = Field(default='INFO')
+    log_dir: str = Field(default='logs')
+    log_json: bool = Field(default=True)
+    log_max_bytes: int = Field(default=10_485_760)
+    log_backup_count: int = Field(default=7)
 
     database_url: str = Field(default='sqlite:///./ai_global_news_dev.db')
     ingest_collect_max_attempts: int = Field(default=3)

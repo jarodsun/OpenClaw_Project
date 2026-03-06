@@ -4,6 +4,7 @@ import logging
 import time
 from contextlib import asynccontextmanager
 from datetime import UTC, datetime
+from uuid import uuid4
 
 from fastapi import Depends, FastAPI, Header, HTTPException, Query, Request
 from sqlalchemy import func, or_, select
@@ -18,8 +19,8 @@ from app.services.ingest_scheduler import IngestScheduler, run_ingest_once as ru
 
 
 settings = get_settings()
-setup_logging(settings.log_level)
-logger = logging.getLogger(__name__)
+setup_logging(settings)
+logger = logging.getLogger('aign.api')
 start_time = time.time()
 scheduler = IngestScheduler()
 
@@ -41,15 +42,24 @@ app = FastAPI(
 
 @app.middleware('http')
 async def request_log_middleware(request: Request, call_next):
+    trace_id = str(uuid4())
     started = time.perf_counter()
     response = await call_next(request)
-    cost_ms = (time.perf_counter() - started) * 1000
+    cost_ms = round((time.perf_counter() - started) * 1000, 2)
+    response.headers['X-Trace-Id'] = trace_id
     logger.info(
-        '%s %s -> %s %.2fms',
-        request.method,
-        request.url.path,
-        response.status_code,
-        cost_ms,
+        'api request',
+        extra={
+            'service': 'api',
+            'event': 'api.request',
+            'trace_id': trace_id,
+            'extra_data': {
+                'method': request.method,
+                'path': request.url.path,
+                'status_code': response.status_code,
+                'latency_ms': cost_ms,
+            },
+        },
     )
     return response
 
@@ -67,7 +77,17 @@ def health() -> dict[str, str | float]:
 
 @app.get('/jobs/ingest/run-once')
 async def run_ingest_once() -> dict[str, int]:
-    return await asyncio.to_thread(run_ingest_once_sync)
+    trace_id = str(uuid4())
+    logger.info(
+        'manual ingest trigger',
+        extra={
+            'service': 'api',
+            'event': 'ingest.run.manual_triggered',
+            'trace_id': trace_id,
+            'extra_data': {'source': 'api'},
+        },
+    )
+    return await asyncio.to_thread(run_ingest_once_sync, trace_id)
 
 
 def get_db() -> Session:

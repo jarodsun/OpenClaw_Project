@@ -4,6 +4,7 @@ import asyncio
 import json
 import logging
 import time
+from uuid import uuid4
 
 from sqlalchemy.exc import IntegrityError
 
@@ -13,6 +14,7 @@ from app.collectors.rss import RSSCollector
 from app.collectors.sources import list_high_priority_sources
 from app.collectors.web import WEBCollector
 from app.core.config import get_settings
+from app.core.logging import setup_logging
 from app.db.session import SessionLocal
 from app.models.article import Article
 from app.services.classifier import classify_tags
@@ -20,8 +22,10 @@ from app.services.dedup import Deduplicator
 from app.services.summarizer import summary_service
 from app.services.text_normalizer import normalize_text
 
-logger = logging.getLogger(__name__)
 settings = get_settings()
+setup_logging(settings)
+scheduler_logger = logging.getLogger('aign.scheduler')
+ingest_logger = logging.getLogger('aign.ingest')
 
 
 class IngestScheduler:
@@ -35,20 +39,43 @@ class IngestScheduler:
             return
         self._stopped.clear()
         self._task = asyncio.create_task(self._run_loop())
-        logger.info('Ingest scheduler started, interval=%ss', self.interval_seconds)
+        scheduler_logger.info(
+            'scheduler started',
+            extra={
+                'service': 'scheduler',
+                'event': 'scheduler.started',
+                'trace_id': '-',
+                'extra_data': {'interval_seconds': self.interval_seconds},
+            },
+        )
 
     async def stop(self) -> None:
         self._stopped.set()
         if self._task:
             await self._task
-        logger.info('Ingest scheduler stopped')
+        scheduler_logger.info(
+            'scheduler stopped',
+            extra={
+                'service': 'scheduler',
+                'event': 'scheduler.stopped',
+                'trace_id': '-',
+            },
+        )
 
     async def _run_loop(self) -> None:
         while not self._stopped.is_set():
+            trace_id = str(uuid4())
             try:
-                await asyncio.to_thread(run_ingest_once)
+                await asyncio.to_thread(run_ingest_once, trace_id)
             except Exception:
-                logger.exception('Ingest cycle failed')
+                scheduler_logger.exception(
+                    'scheduled ingest failed',
+                    extra={
+                        'service': 'scheduler',
+                        'event': 'scheduler.run.failed',
+                        'trace_id': trace_id,
+                    },
+                )
             try:
                 await asyncio.wait_for(self._stopped.wait(), timeout=self.interval_seconds)
             except TimeoutError:
@@ -65,19 +92,26 @@ def _collector_for_kind(kind: CollectorKind):
     return None
 
 
-def _collect_with_retry(collector, source, max_attempts: int, backoff_seconds: float):
+def _collect_with_retry(collector, source, max_attempts: int, backoff_seconds: float, trace_id: str):
     last_error: Exception | None = None
     for attempt in range(1, max_attempts + 1):
         try:
             return collector.collect(source), attempt - 1
         except Exception as exc:
             last_error = exc
-            logger.warning(
-                'Collect attempt %s/%s failed for source=%s: %s',
-                attempt,
-                max_attempts,
-                source.name,
-                exc,
+            ingest_logger.warning(
+                'collect retry failed',
+                extra={
+                    'service': 'ingest',
+                    'event': 'ingest.source.retry_failed',
+                    'trace_id': trace_id,
+                    'extra_data': {
+                        'source': source.name,
+                        'attempt': attempt,
+                        'max_attempts': max_attempts,
+                        'error': str(exc),
+                    },
+                },
             )
             if attempt < max_attempts:
                 time.sleep(backoff_seconds * attempt)
@@ -87,8 +121,18 @@ def _collect_with_retry(collector, source, max_attempts: int, backoff_seconds: f
     raise RuntimeError(f'Collect failed for source={source.name}')
 
 
-def run_ingest_once() -> dict[str, int]:
+def run_ingest_once(trace_id: str | None = None) -> dict[str, int]:
+    trace_id = trace_id or str(uuid4())
     sources = [source for source in list_high_priority_sources() if source.kind in {CollectorKind.RSS, CollectorKind.API, CollectorKind.WEB}]
+    ingest_logger.info(
+        'ingest run started',
+        extra={
+            'service': 'ingest',
+            'event': 'ingest.run.started',
+            'trace_id': trace_id,
+            'extra_data': {'sources': len(sources)},
+        },
+    )
 
     fetched = 0
     inserted = 0
@@ -109,9 +153,26 @@ def run_ingest_once() -> dict[str, int]:
         deduplicator = Deduplicator(existing_articles=existing_articles)
 
         for source in sources:
+            ingest_logger.info(
+                'source ingest started',
+                extra={
+                    'service': 'ingest',
+                    'event': 'ingest.source.started',
+                    'trace_id': trace_id,
+                    'extra_data': {'source': source.name, 'kind': source.kind.value},
+                },
+            )
             collector = _collector_for_kind(source.kind)
             if collector is None:
-                logger.warning('No collector for source=%s kind=%s', source.name, source.kind)
+                ingest_logger.warning(
+                    'collector missing',
+                    extra={
+                        'service': 'ingest',
+                        'event': 'ingest.source.collector_missing',
+                        'trace_id': trace_id,
+                        'extra_data': {'source': source.name, 'kind': source.kind.value},
+                    },
+                )
                 failed_sources += 1
                 continue
 
@@ -121,14 +182,36 @@ def run_ingest_once() -> dict[str, int]:
                     source=source,
                     max_attempts=settings.ingest_collect_max_attempts,
                     backoff_seconds=settings.ingest_collect_backoff_seconds,
+                    trace_id=trace_id,
                 )
                 collect_retried += retried_count
             except Exception:
-                logger.exception('Collect failed after retries for source=%s', source.name)
+                ingest_logger.exception(
+                    'collect failed after retries',
+                    extra={
+                        'service': 'ingest',
+                        'event': 'ingest.source.failed',
+                        'trace_id': trace_id,
+                        'extra_data': {'source': source.name},
+                    },
+                )
                 failed_sources += 1
                 continue
 
             fetched += len(articles)
+            ingest_logger.info(
+                'source ingest succeeded',
+                extra={
+                    'service': 'ingest',
+                    'event': 'ingest.source.succeeded',
+                    'trace_id': trace_id,
+                    'extra_data': {
+                        'source': source.name,
+                        'fetched': len(articles),
+                        'collect_retried': retried_count,
+                    },
+                },
+            )
             for item in articles:
                 snapshot = deduplicator.build_snapshot(
                     url=item.url,
@@ -175,12 +258,19 @@ def run_ingest_once() -> dict[str, int]:
                         break
                     except Exception as exc:
                         db.rollback()
-                        logger.warning(
-                            'DB write attempt %s/%s failed for url=%s: %s',
-                            write_attempt,
-                            settings.ingest_db_max_attempts,
-                            item.url,
-                            exc,
+                        ingest_logger.warning(
+                            'db write retry failed',
+                            extra={
+                                'service': 'ingest',
+                                'event': 'ingest.db.write_retry_failed',
+                                'trace_id': trace_id,
+                                'extra_data': {
+                                    'url': item.url,
+                                    'attempt': write_attempt,
+                                    'max_attempts': settings.ingest_db_max_attempts,
+                                    'error': str(exc),
+                                },
+                            },
                         )
                         if write_attempt == settings.ingest_db_max_attempts:
                             failed_writes += 1
@@ -200,5 +290,13 @@ def run_ingest_once() -> dict[str, int]:
         'skipped': skipped,
         'failed_writes': failed_writes,
     }
-    logger.info('Ingest cycle done: %s', result)
+    ingest_logger.info(
+        'ingest run finished',
+        extra={
+            'service': 'ingest',
+            'event': 'ingest.run.finished',
+            'trace_id': trace_id,
+            'extra_data': result,
+        },
+    )
     return result

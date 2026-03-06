@@ -12,3 +12,6 @@ frontend/node_modules/
 
 # local sqlite db
 *.db
+
+# runtime logs
+backend/logs/
