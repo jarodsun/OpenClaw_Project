@@ -61,3 +61,15 @@
 - 需用户拍板：无新增（继续沿用 `Q-001` 默认口径）。
 - 证据文件：`docs/10_game_design/11-system-professions-and-skills.md`、`docs/00_management/03-execution-plan.md`、`docs/00_management/05-scope-change-log.md`
 
+### 2026-03-07 05:00（Asia/Shanghai）
+- 执行项：完成 `docs/10_game_design/12-system-equipment-and-loot.md` v1.0，补齐装备部位、稀有度权重、词条生成、掉落流程、保底机制、强化分解与配置约束。
+- 评审发现：
+  1) 占位稿无法支撑后端掉落结算与配置建模；
+  2) 初版未声明异常场景降级策略，存在“配置缺失导致结算中断”风险。
+- 自动修正：
+  1) 将占位稿重构为可执行规则文档并补齐 DoD 与衔接章节；
+  2) 新增“5.3 自动降级默认值”，明确掉落池失效与副词条生成失败时的容错策略。
+- 复评审结论：通过（与 D2.2 阶段一致，未引入范围外功能，可直接衔接 `20/21/34` 文档）。
+- 需用户拍板：无新增（继续沿用 `Q-001` 默认口径）。
+- 证据文件：`docs/10_game_design/12-system-equipment-and-loot.md`、`docs/00_management/03-execution-plan.md`、`docs/00_management/05-scope-change-log.md`
+

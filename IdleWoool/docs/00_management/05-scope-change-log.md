@@ -53,3 +53,8 @@
 - 原因：D2.2 缺少职业与技能的实现口径，无法稳定衔接装备、平衡与接口文档
 - 影响：`12-system-equipment-and-loot.md`、`20-balance-framework.md`、`34-api-contract.md` 可按统一口径继续推进
 - 状态：生效
+
+- 变更：完成并落地 `docs/10_game_design/12-system-equipment-and-loot.md` v1.0（装备部位、稀有度权重、词条规则、掉落流程、保底机制、强化分解与配置约束）
+- 原因：D2.2 缺少装备与掉落统一口径，导致后续平衡与接口字段无法稳定收口
+- 影响：`20-balance-framework.md`、`21-content-config-schema.md`、`34-api-contract.md` 可按统一规则继续推进
+- 状态：生效
