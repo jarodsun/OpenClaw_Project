@@ -73,3 +73,8 @@
 - 原因：D2.2 缺少统一配置模型，导致系统文档难以收敛到可验证的数据契约
 - 影响：`34-api-contract.md`、`33-database-sqlite3-schema.md`、`41-testing-strategy.md` 可按统一字段与版本策略推进
 - 状态：生效
+
+- 变更：完成并落地 `docs/10_game_design/30-architecture-overview.md` v1.0（架构目标、模块边界、关键数据流、非功能基线、部署与演进路径）
+- 原因：D3.1 缺少总体架构蓝图，导致前后端/数据库/API 文档缺乏统一约束
+- 影响：`31-frontend-nextjs-architecture.md`、`32-backend-fastapi-architecture.md`、`33-database-sqlite3-schema.md`、`34-api-contract.md`、`35-save-and-sync-strategy.md` 可按统一边界推进
+- 状态：生效

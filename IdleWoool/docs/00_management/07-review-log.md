@@ -108,3 +108,15 @@
 - 复评审结论：通过（与 D2.2 阶段一致，未引入范围漂移，可直接衔接 `33/34/41` 文档）。
 - 需用户拍板：无新增（继续沿用 `09-open-questions.md` 的 `Q-001`）。
 - 证据文件：`docs/10_game_design/21-content-config-schema.md`、`docs/00_management/03-execution-plan.md`、`docs/00_management/05-scope-change-log.md`
+
+### 2026-03-07 05:40（Asia/Shanghai）
+- 执行项：完成 `docs/10_game_design/30-architecture-overview.md` v1.0，补齐总体架构目标、模块边界、关键数据流、非功能基线、部署与演进路线。
+- 评审发现：
+  1) 原文档为占位稿，无法为 D3.1 提供统一架构约束；
+  2) 初稿接入层写死为 `JWT`，对首版认证实现绑定过早，影响后续方案弹性。
+- 自动修正：
+  1) 将占位稿重构为可执行架构蓝图并补齐 DoD 与后续文档衔接；
+  2) 将“`JWT Session`”修正为“`Session Token`”中性表述，避免过早技术拍板。
+- 复评审结论：通过（与 D3.1 阶段一致，未引入范围漂移，可直接衔接 `31~35` 文档）。
+- 需用户拍板：无新增（继续沿用 `09-open-questions.md` 的 `Q-001` 默认口径）。
+- 证据文件：`docs/10_game_design/30-architecture-overview.md`、`docs/00_management/03-execution-plan.md`、`docs/00_management/05-scope-change-log.md`
