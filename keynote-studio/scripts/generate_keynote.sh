@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-echo "[TODO] 在这里实现 Markdown/JSON -> Keynote 的自动生成逻辑"
-echo "输入示例: examples/demo-outline.md"
-echo "输出目录: output/"
+# backward-compatible entrypoint
+# usage: ./scripts/generate_keynote.sh <deck-name>
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+"$SCRIPT_DIR/render_reveal.sh" "$@"

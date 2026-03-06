@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>demo-reveal-dracula</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reset.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/dracula.css" id="theme" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/monokai.css" />
+    <style>
+      .reveal h1, .reveal h2, .reveal h3 { text-transform: none; }
+      .reveal .small { font-size: 0.7em; opacity: 0.85; }
+    </style>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section data-markdown>
+          <textarea data-template>
+# Keynote Studio
+## Reveal.js + Dracula 示例
+
+单文件 HTML 演示稿（由 `source.md` 生成）
+
+---
+
+## 目标
+
+- 用 Web 前端技术生成演示稿
+- 每个 Keynote 独立目录管理
+- 输出单个 HTML 文件
+
+---
+
+## 结构示例
+
+1. 封面页
+2. 目录页
+3. 内容页
+4. 总结页
+
+---
+
+## 代码块示例
+
+```js
+const deck = {
+  engine: 'reveal.js',
+  theme: 'dracula',
+  output: 'single-html'
+};
+
+console.log('Keynote Studio demo ready');
+```
+
+---
+
+## 下一步
+
+- 扩展模板系统
+- 增加品牌化样式
+- 支持批量生成
+          </textarea>
+        </section>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/markdown/markdown.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/highlight.js"></script>
+    <script>
+      Reveal.initialize({
+        hash: true,
+        slideNumber: true,
+        transition: 'slide',
+        plugins: [ RevealMarkdown, RevealNotes, RevealHighlight ]
+      });
+    </script>
+  </body>
+</html>
