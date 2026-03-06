@@ -26,7 +26,7 @@ FastAPI 后端骨架。
   - `prod`：生产配置（`debug=false`，`log_level=INFO`）
 - 数据库连接：`AIGN_DATABASE_URL`
   - 默认开发：`sqlite:///./ai_global_news_dev.db`
-  - 生产建议：`mysql+pymysql://user:pass@host:3306/db`
+  - 生产建议（当前统一 SQLite3）：`sqlite:///./ai_global_news_dev.db`
 - 配置入口：`app/core/config.py`
 - 运行时可通过 `/health` 返回的 `env`、`version`、`uptime_seconds` 字段确认当前状态。
 
