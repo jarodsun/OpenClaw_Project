@@ -8,6 +8,7 @@ from sqlalchemy.exc import IntegrityError
 from app.collectors.api import APICollector
 from app.collectors.base import CollectorKind
 from app.collectors.rss import RSSCollector
+from app.collectors.web import WEBCollector
 from app.collectors.sources import list_high_priority_sources
 from app.core.config import get_settings
 from app.db.session import SessionLocal
@@ -54,6 +55,8 @@ def _collector_for_kind(kind: CollectorKind):
         return RSSCollector()
     if kind == CollectorKind.API:
         return APICollector()
+    if kind == CollectorKind.WEB:
+        return WEBCollector()
     return None
 
 
@@ -80,7 +83,7 @@ def _collect_with_retry(collector, source, max_attempts: int, backoff_seconds: f
 
 
 def run_ingest_once() -> dict[str, int]:
-    sources = [source for source in list_high_priority_sources() if source.kind in {CollectorKind.RSS, CollectorKind.API}]
+    sources = [source for source in list_high_priority_sources() if source.kind in {CollectorKind.RSS, CollectorKind.API, CollectorKind.WEB}]
 
     fetched = 0
     inserted = 0

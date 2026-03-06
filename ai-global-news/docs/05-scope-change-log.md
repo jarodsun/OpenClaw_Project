@@ -129,3 +129,31 @@
 - 现象：执行 `python3 -m pytest ...` 时报错 `No module named pytest`。
 - 根因：当前后端环境未安装 pytest 依赖。
 - 处理：回退为标准库 `unittest` 用例并执行 `python3 -m unittest tests/test_text_normalizer.py` 验证通过。
+
+### 2026-03-06 19:46（执行问题与修复）
+
+- 时间：2026-03-06 19:46 CST
+- 现象：执行仓库检索命令 `rg --files` 时报错 `command not found: rg`。
+- 根因：当前运行环境未安装 ripgrep。
+- 处理：回退为 `find ... -type f` 完成文件检索，任务继续。
+
+### 2026-03-06 19:47（执行问题与修复）
+
+- 时间：2026-03-06 19:47 CST
+- 现象：执行 `find ... | sed` 时返回 `bad flag in substitute command`。
+- 根因：sed 替换表达式包含换行，导致 BSD sed 解析失败。
+- 处理：移除该 sed 步骤，直接使用 `find ... | head` 输出文件列表。
+
+### 2026-03-06 19:48（执行问题与修复）
+
+- 时间：2026-03-06 19:48 CST
+- 现象：请求未加引号的 URL（包含 `?`）时 zsh 报错 `no matches found`。
+- 根因：zsh 将 `?` 解释为通配符并尝试路径展开。
+- 处理：为 URL 参数增加单引号，避免通配符展开。
+
+### 2026-03-06 19:50（执行问题与修复）
+
+- 时间：2026-03-06 19:50 CST
+- 现象：用 `perl -pe` 更新计划文档时出现 `command not found: WEBCollector`。
+- 根因：双引号字符串内含 markdown 反引号，触发 shell 命令替换。
+- 处理：去除反引号后重试替换成功，并固定后续文本替换避免反引号出现在双引号命令体中。
