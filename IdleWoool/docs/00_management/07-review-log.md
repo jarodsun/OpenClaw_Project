@@ -216,3 +216,15 @@
 - 复评审结论：通过（与 D4.1 阶段一致，未引入范围漂移，可直接衔接 `43-security-and-cheat-prevention.md`）。
 - 需用户拍板：无新增（继续沿用 `09-open-questions.md` 的 `Q-001` 默认口径）。
 - 证据文件：`docs/10_game_design/42-observability-and-logs.md`、`docs/00_management/03-execution-plan.md`、`docs/00_management/05-scope-change-log.md`
+
+### 2026-03-07 07:10（Asia/Shanghai）
+- 执行项：完成 `docs/10_game_design/43-security-and-cheat-prevention.md` v1.0，补齐威胁模型、安全基线、反作弊检测规则、分级处置与安全事件响应流程。
+- 评审发现：
+  1) 初版自评审发现仅定义检测规则，未显式约束误杀控制门槛；
+  2) 接口限流若只保留 IP 维度，存在 NAT 场景误伤与账号刷接口漏检风险。
+- 自动修正：
+  1) 新增“4.3 误杀控制”，固化“双规则命中才冻结 + 规则灰度 + 误报率目标”；
+  2) 将限流策略修正为“账号维度 + IP 维度”双层控制，并明确高价值接口串行化。
+- 复评审结论：通过（与 D4.1 阶段一致，未引入范围漂移，可直接衔接 `44/45` 文档）。
+- 需用户拍板：无新增（继续沿用 `09-open-questions.md` 的 `Q-001` 默认口径）。
+- 证据文件：`docs/10_game_design/43-security-and-cheat-prevention.md`、`docs/00_management/03-execution-plan.md`、`docs/00_management/05-scope-change-log.md`

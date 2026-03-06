@@ -14,6 +14,12 @@
 
 ### 2026-03-07
 
+- 变更：完成并落地 `docs/10_game_design/43-security-and-cheat-prevention.md` v1.0（威胁模型、安全基线、反作弊规则、分级处置、响应 Runbook 与 DoD）。
+- 原因：D4.1 尚缺安全与反作弊可执行基线，发布门禁与经济系统风控无法闭环。
+- 影响：`44-release-plan-and-milestones.md`、`45-risk-register.md` 可直接复用安全门禁、分级告警与应急流程。
+- 状态：生效
+
+
 - 变更：完成并落地 `docs/10_game_design/42-observability-and-logs.md` v1.0（日志分层、指标与告警阈值、链路耗时字段、Runbook、留存与脱敏策略）。
 - 原因：D4.1 缺少可观测与日志基线，无法形成“测试门禁 -> 线上告警 -> 故障回溯”的执行闭环。
 - 影响：`43-security-and-cheat-prevention.md` 与后续实现阶段可按统一观测口径落地埋点、告警与排障流程。

@@ -49,7 +49,7 @@
 - [x] 完成 `docs/10_game_design/40-dev-environment-and-commands.md`
 - [x] 完成 `docs/10_game_design/41-testing-strategy.md`
 - [x] 完成 `docs/10_game_design/42-observability-and-logs.md`
-- [ ] 完成 `docs/10_game_design/43-security-and-cheat-prevention.md`
+- [x] 完成 `docs/10_game_design/43-security-and-cheat-prevention.md`
 
 ### D4.2 发布与风险
 - [ ] 完成 `docs/10_game_design/44-release-plan-and-milestones.md`
