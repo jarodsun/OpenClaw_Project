@@ -1,3 +1,4 @@
 output/*
 !output/.gitkeep
+!output/*.html
 .DS_Store
