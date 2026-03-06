@@ -156,3 +156,15 @@
 - 复评审结论：通过（与 D3.1 阶段一致，未引入范围漂移，可直接衔接 `34/35/41` 文档）。
 - 需用户拍板：无新增（继续沿用 `09-open-questions.md` 的 `Q-001` 默认口径）。
 - 证据文件：`docs/10_game_design/33-database-sqlite3-schema.md`、`docs/00_management/03-execution-plan.md`、`docs/00_management/05-scope-change-log.md`
+
+### 2026-03-07 06:20（Asia/Shanghai）
+- 执行项：完成 `docs/10_game_design/34-api-contract.md` v1.0，补齐统一响应信封、认证会话、核心业务接口、存档与配置接口、错误码、幂等并发约束与离线领取示例。
+- 评审发现：
+  1) 原文档为占位稿，无法支撑前后端联调与测试映射；
+  2) 初稿中离线领取幂等键命名同时出现 `claim_id` 与 `X-Request-Id`，存在实现歧义。
+- 自动修正：
+  1) 将占位稿重构为可执行 API 契约文档，并对齐 `32/33` 架构与数据约束；
+  2) 明确 `X-Request-Id` 为写接口唯一幂等键，`claim_id` 仅保留语义说明，消除字段口径冲突。
+- 复评审结论：通过（与 D3.2 阶段一致，未引入范围漂移，可直接衔接 `35/41` 文档与实现拆分）。
+- 需用户拍板：无新增（继续沿用 `09-open-questions.md` 的 `Q-001` 默认口径）。
+- 证据文件：`docs/10_game_design/34-api-contract.md`、`docs/00_management/03-execution-plan.md`、`docs/00_management/05-scope-change-log.md`

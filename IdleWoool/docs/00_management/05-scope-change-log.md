@@ -93,3 +93,8 @@
 - 原因：D3.1 缺少数据库实现基线，导致 API 契约与存档同步文档无法收敛到可实现字段模型
 - 影响：`34-api-contract.md`、`35-save-and-sync-strategy.md`、`41-testing-strategy.md` 可按统一数据模型继续推进
 - 状态：生效
+
+- 变更：完成并落地 `docs/10_game_design/34-api-contract.md` v1.0（认证会话、核心业务接口、存档与配置接口、错误码、幂等并发约束、示例报文与 DoD）
+- 原因：D3.2 缺少统一 API 字段与错误模型，前后端联调与测试用例无法按同一口径执行
+- 影响：`35-save-and-sync-strategy.md`、`41-testing-strategy.md`、后续实现任务可按统一契约直接拆分开发与联调
+- 状态：生效
