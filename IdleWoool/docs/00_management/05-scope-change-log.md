@@ -14,6 +14,11 @@
 
 ### 2026-03-07
 
+- 变更：完成并落地 `docs/10_game_design/44-release-plan-and-milestones.md` v1.0（发布节奏、里程碑门禁、灰度放量、回滚阈值、职责分工与 DoD）。
+- 原因：D4.2 缺少统一发布路径与 Go/No-Go 标准，无法把测试、观测、安全文档收敛到同一执行流程。
+- 影响：`45-risk-register.md` 可直接复用里程碑风险触发条件与回滚策略，后续实现阶段可按统一发布门禁执行。
+- 状态：生效
+
 - 变更：完成并落地 `docs/10_game_design/43-security-and-cheat-prevention.md` v1.0（威胁模型、安全基线、反作弊规则、分级处置、响应 Runbook 与 DoD）。
 - 原因：D4.1 尚缺安全与反作弊可执行基线，发布门禁与经济系统风控无法闭环。
 - 影响：`44-release-plan-and-milestones.md`、`45-risk-register.md` 可直接复用安全门禁、分级告警与应急流程。

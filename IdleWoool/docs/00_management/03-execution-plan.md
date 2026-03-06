@@ -52,7 +52,7 @@
 - [x] 完成 `docs/10_game_design/43-security-and-cheat-prevention.md`
 
 ### D4.2 发布与风险
-- [ ] 完成 `docs/10_game_design/44-release-plan-and-milestones.md`
+- [x] 完成 `docs/10_game_design/44-release-plan-and-milestones.md`
 - [ ] 完成 `docs/10_game_design/45-risk-register.md`
 
 ## Phase D5：体验与运营文档

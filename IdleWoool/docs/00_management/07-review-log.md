@@ -228,3 +228,15 @@
 - 复评审结论：通过（与 D4.1 阶段一致，未引入范围漂移，可直接衔接 `44/45` 文档）。
 - 需用户拍板：无新增（继续沿用 `09-open-questions.md` 的 `Q-001` 默认口径）。
 - 证据文件：`docs/10_game_design/43-security-and-cheat-prevention.md`、`docs/00_management/03-execution-plan.md`、`docs/00_management/05-scope-change-log.md`
+
+### 2026-03-07 07:20（Asia/Shanghai）
+- 执行项：完成 `docs/10_game_design/44-release-plan-and-milestones.md` v1.0，补齐发布节奏、里程碑、Go/No-Go 门禁、灰度策略、回滚阈值与职责分工。
+- 评审发现：
+  1) 初稿自评审发现“质量门禁”标题层级误设为 `## 4.1`，结构一致性不足；
+  2) 初稿未量化回滚触发阈值，发布执行仍存在口径歧义。
+- 自动修正：
+  1) 将 `4.1` 修正为 `###` 层级并统一章节结构；
+  2) 新增可执行阈值（`5xx`、误报率、接口 P95、经济异常）与回滚顺序，固化应急流程。
+- 复评审结论：通过（与 D4.2 阶段一致，未引入范围漂移，可直接衔接 `45-risk-register.md`）。
+- 需用户拍板：无新增（继续沿用 `09-open-questions.md` 的 `Q-001` 默认口径）。
+- 证据文件：`docs/10_game_design/44-release-plan-and-milestones.md`、`docs/00_management/03-execution-plan.md`、`docs/00_management/05-scope-change-log.md`
