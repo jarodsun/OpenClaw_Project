@@ -178,3 +178,10 @@
 - 现象：执行 `python3 -m unittest tests/test_dedup.py` 报错 `ModuleNotFoundError: No module named 'sqlalchemy'`。
 - 根因：新增测试直接导入 `Article` ORM 模型，触发对 SQLAlchemy 的运行时依赖；当前环境未安装该依赖。
 - 处理：重构 `dedup.py` 为 `TYPE_CHECKING` 条件导入，测试改为 `ArticleStub`，消除该测试路径对 SQLAlchemy 的硬依赖并验证通过。
+
+### 2026-03-06 20:18（执行问题与修复）
+
+- 时间：2026-03-06 20:18 CST
+- 现象：执行 `exec + apply_patch` 修改计划文档时报错 `command not found: apply_patch`；执行 `pytest` 报错 `command not found: pytest`；首次执行 `python3 -m unittest tests/test_dedup.py` 报错 `No module named 'tests/test_dedup'`。
+- 根因：当前环境未提供 `apply_patch` 可执行命令，且未安装 pytest；另外 unittest 模块路径使用了文件路径写法。
+- 处理：按容错策略改为 `exec + python3` 直接修改文档；测试回退为内置 `unittest` 并在 `backend/` 目录使用模块路径 `python3 -m unittest tests.test_dedup`，验证通过。
