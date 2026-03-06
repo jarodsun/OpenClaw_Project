@@ -192,3 +192,15 @@
 - 复评审结论：通过（与 D4.1 阶段一致，未引入范围漂移，可直接衔接 `41-testing-strategy.md`）。
 - 需用户拍板：无新增（继续沿用 `09-open-questions.md` 的 `Q-001` 默认口径）。
 - 证据文件：`docs/10_game_design/40-dev-environment-and-commands.md`、`docs/00_management/03-execution-plan.md`、`docs/00_management/05-scope-change-log.md`
+
+### 2026-03-07 06:50（Asia/Shanghai）
+- 执行项：完成 `docs/10_game_design/41-testing-strategy.md` v1.0，补齐测试分层、用例设计、质量门禁、自动化策略与缺陷分级。
+- 评审发现：
+  1) 原文档为占位稿，缺少可执行测试策略，无法支撑 D4.1 阶段落地；
+  2) 初稿评审时发现未显式定义“提测门禁/发布门禁”分层标准，存在执行口径分叉风险。
+- 自动修正：
+  1) 重构为可执行测试策略文档，并补齐与 `10~13/20~21/32~35/40` 的映射关系；
+  2) 增补“4.1 提测门禁 / 4.2 发布门禁”并固化阈值与缺陷清零要求。
+- 复评审结论：通过（与 D4.1 阶段一致，未引入范围漂移，可直接衔接 `42-observability-and-logs.md`）。
+- 需用户拍板：无新增（继续沿用 `09-open-questions.md` 的 `Q-001` 默认口径）。
+- 证据文件：`docs/10_game_design/41-testing-strategy.md`、`docs/00_management/03-execution-plan.md`、`docs/00_management/05-scope-change-log.md`

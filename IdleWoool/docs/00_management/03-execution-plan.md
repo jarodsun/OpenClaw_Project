@@ -47,7 +47,7 @@
 
 ### D4.1 开发与质量
 - [x] 完成 `docs/10_game_design/40-dev-environment-and-commands.md`
-- [ ] 完成 `docs/10_game_design/41-testing-strategy.md`
+- [x] 完成 `docs/10_game_design/41-testing-strategy.md`
 - [ ] 完成 `docs/10_game_design/42-observability-and-logs.md`
 - [ ] 完成 `docs/10_game_design/43-security-and-cheat-prevention.md`
 

@@ -14,6 +14,11 @@
 
 ### 2026-03-07
 
+- 变更：完成并落地 `docs/10_game_design/41-testing-strategy.md` v1.0（分层测试策略、质量门禁、自动化执行、缺陷分级与响应）。
+- 原因：D4.1 缺少测试入口与门禁标准，导致后续实现阶段无法统一“提测/发布”质量口径。
+- 影响：`42-observability-and-logs.md`、`43-security-and-cheat-prevention.md` 与后续实现任务可按统一质量约束推进。
+- 状态：生效
+
 - 变更：完成并落地 `docs/10_game_design/40-dev-environment-and-commands.md` v1.0（环境基线、初始化流程、联调命令、故障排查、DoD）。
 - 原因：D4.1 缺少统一开发环境与命令口径，阻塞后续测试策略与开发执行的一致性。
 - 影响：`41-testing-strategy.md`、实际开发 onboarding 与日常联调可按统一命令基线推进。
