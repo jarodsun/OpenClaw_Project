@@ -54,6 +54,7 @@
 ### D4.2 发布与风险
 - [x] 完成 `docs/10_game_design/44-release-plan-and-milestones.md`
 - [x] 完成 `docs/10_game_design/45-risk-register.md`
+- [x] 完成 `docs/10_game_design/45-risk-register.md` v1.1（补齐风险受理阈值与放行门禁）
 
 ## Phase D5：体验与运营文档
 

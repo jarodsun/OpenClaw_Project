@@ -312,3 +312,16 @@
 - 复评审结论：通过（未引入范围漂移，且提升了评审与决策链路可追溯性）。
 - 需用户拍板：无新增（`Q-001` 仍待最终业务拍板）。
 - 证据文件：`docs/00_management/08-decision-register.md`、`docs/00_management/03-execution-plan.md`、`docs/00_management/05-scope-change-log.md`
+
+### 2026-03-07 08:30（Asia/Shanghai）
+- 执行项：升级 `docs/10_game_design/45-risk-register.md` 至 v1.1，补齐风险“受理阈值”与发布门禁“受理放行条件”。
+- 评审发现：
+  1) 现有风险分级/缓解规则完整，但缺少“风险何时可被受理放行”的硬标准，导致 `watching` 状态在发布评审中解释空间较大；
+  2) 初版新增条目未明确“未满足阈值时的日志动作”，闭环留痕存在缺口。
+- 自动修正：
+  1) 新增 `2.5 风险受理阈值`（`R1/R2/R3` 对应时间窗与证据要求）；
+  2) 在 `4.1` 增加 `R1 watching` 放行门禁（不满足阈值按 `open` 等价处理）；
+  3) 在 `2.5` 明确“未受理原因”必须写入 `07-review-log.md`。
+- 复评审结论：通过（与 D4.2 阶段一致，未引入范围漂移，且提升 Go/No-Go 判定确定性）。
+- 需用户拍板：无新增。
+- 证据文件：`docs/10_game_design/45-risk-register.md`、`docs/00_management/03-execution-plan.md`、`docs/00_management/05-scope-change-log.md`
