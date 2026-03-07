@@ -12,6 +12,18 @@
 - 需用户拍板：无 / 见 `09-open-questions.md`
 - 证据文件：
 
+### YYYY-MM-DD HH:mm（Asia/Shanghai）【D6｜管理文档轮次】
+- 执行项：目标文件：`docs/00_management/*.md`（至少 1 个）
+- 评审发现：
+  1) 
+  2) 
+- 自动修正：
+  1) 
+  2) 
+- 复评审结论：通过 / 需继续修正
+- 需用户拍板：无 / 见 `09-open-questions.md`
+- 证据文件：`docs/00_management/*.md:line`、`memory/projects.md:line`
+
 ### 2026-03-07 04:20（Asia/Shanghai）
 - 执行项：完成 `docs/10_game_design/02-game-design-core-loop.md` v1.0，补齐目标、循环流程、状态机、规则口径、异常处理、验收标准与后续衔接。
 - 评审发现：
@@ -457,3 +469,15 @@
 - 复评审结论：通过（闭环完整，未引入范围漂移，模板执行一致性与审计结构化比对效率提升）。
 - 需用户拍板：无新增（`Q-001` 继续保持 open，默认按 A 档推进）。
 - 证据文件：`docs/00_management/06-review-checklist.md:69`、`docs/00_management/03-execution-plan.md:76`、`docs/00_management/05-scope-change-log.md:17`、`memory/projects.md:272`
+
+### 2026-03-07 10:20（Asia/Shanghai）【D6｜管理文档轮次】
+- 执行项：升级 `docs/00_management/07-review-log.md` 模板至 v1.9 对齐版（显式阶段标识/目标文件名/证据行号格式），并同步更新 `03-execution-plan.md`、`05-scope-change-log.md` 与 `memory/projects.md`。
+- 评审发现：
+  1) 现有模板未显式提供“阶段标识 + 目标文件名”占位，虽可执行但容易在后续轮次产生记录口径漂移；
+  2) 管理文档轮次缺少专用模板，执行者需要临时组织字段，不利于稳定复用。
+- 自动修正：
+  1) 在 `07-review-log.md` 模板区新增“D6｜管理文档轮次”标准模板，固化字段顺序与证据格式（含 `:line`）；
+  2) 本轮按新模板完成记录并同步更新执行计划、范围日志与项目记忆，确保闭环归档一致。
+- 复评审结论：通过（与 D6 阶段一致，未引入范围漂移，模板复用性与审计一致性提升）。
+- 需用户拍板：无新增（`Q-001` 继续保持 open，默认按 A 档推进）。
+- 证据文件：`docs/00_management/07-review-log.md:15`、`docs/00_management/03-execution-plan.md:77`、`docs/00_management/05-scope-change-log.md:17`、`memory/projects.md:278`
