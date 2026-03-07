@@ -14,8 +14,9 @@
 
 1. 每轮只完成 **1 个任务包（Task Pack）**。
 2. 每轮必须使用与更新：
-   - 使用 `docs/00_management/02-review-checklist.md` 完成评审勾选
-   - 更新 `docs/00_management/03-review-log.md`
+   - 使用 `docs/00_management/02-review-checklist.md`（只读模板）完成本轮评审
+   - 将评审结果追加到当日文件：`docs/00_management/reviews/YYYY-MM-DD-checklist-runs.md`
+   - `docs/00_management/03-review-log.md` 仅记录当日评审文件路径与评审结论
    - 更新 `docs/00_management/04-decision-register.md`（如有决策）
 3. 任务包完成标准：输入已读、输出已写、验收已通过、留痕已完成。
 4. 无需人工拍板等待，可自决，但必须记录依据与回滚条件。
