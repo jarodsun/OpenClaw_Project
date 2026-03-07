@@ -14,6 +14,11 @@
 
 ### 2026-03-07
 
+- 变更：完成并落地 `docs/10_game_design/52-liveops-and-monetization.md` v1.0（活动分层、活动模板、商业化分层、定价锚点、转化路径、风控合规、埋点与 DoD），并在自评审后自动补齐“同周期 SKU 数量上限”以降低选择过载风险。
+- 原因：D5 阶段缺少运营与商业化执行基线，导致活动配置、支付链路、数据分析与发布门禁无法形成闭环。
+- 影响：D5 阶段文档闭合；后续实现可直接按统一口径推进 `34-api-contract.md`（支付幂等）、`42-observability-and-logs.md`（商业化埋点）与 `44-release-plan-and-milestones.md`（活动灰度门禁）。
+- 状态：生效
+
 - 变更：完成并落地 `docs/10_game_design/51-audio-visual-style-guide.md` v1.0（视觉关键词、色彩 Token、动效分级、音频分层、资源预算、降级策略与 DoD），并在评审后自动补齐音频可访问性条目。
 - 原因：D5 阶段缺少 A/V 可执行规范，视觉与音频资源无法与前端实现、测试门禁和发布预算形成统一约束。
 - 影响：D5 收敛到仅剩 `52-liveops-and-monetization.md`；`41-testing-strategy.md` 与 `44-release-plan-and-milestones.md` 可直接纳入 A/V 预算与可访问性检查。

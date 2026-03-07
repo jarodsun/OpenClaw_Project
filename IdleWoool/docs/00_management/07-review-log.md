@@ -276,3 +276,15 @@
 - 复评审结论：通过（与 D4.2 阶段一致，文档可直接用于 Go/No-Go 风险评审，未引入范围漂移）。
 - 需用户拍板：无新增（继续沿用 `09-open-questions.md` 现有 `Q-001`）。
 - 证据文件：`docs/10_game_design/45-risk-register.md`、`docs/00_management/03-execution-plan.md`、`docs/00_management/05-scope-change-log.md`
+
+### 2026-03-07 08:00（Asia/Shanghai）
+- 执行项：完成 `docs/10_game_design/52-liveops-and-monetization.md` v1.0，补齐活动分层、活动模板、节奏频控、商业化分层、定价锚点、转化路径、风控合规、埋点与 DoD。
+- 评审发现：
+  1) 初版“定价策略”可执行性不足，缺少 SKU 数量约束，存在用户选择过载风险；
+  2) 初版未显式声明活动灰度开关维度，发布执行仍有歧义。
+- 自动修正：
+  1) 新增“同周期同价值档位 SKU 不超过 3 个”约束；
+  2) 在技术实现约束中补齐“按用户分层/渠道/时间窗灰度开关”规则。
+- 复评审结论：通过（与 D5 阶段一致，未引入范围漂移，且可直接支撑运营配置、支付联调与发布门禁）。
+- 需用户拍板：无新增（继续沿用 `09-open-questions.md` 的 `Q-001` 默认口径）。
+- 证据文件：`docs/10_game_design/52-liveops-and-monetization.md`、`docs/00_management/03-execution-plan.md`、`docs/00_management/05-scope-change-log.md`
