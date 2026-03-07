@@ -338,6 +338,19 @@
 - 需用户拍板：无新增。
 - 证据文件：`docs/10_game_design/45-risk-register.md`、`docs/00_management/03-execution-plan.md`、`docs/00_management/05-scope-change-log.md`
 
+### 2026-03-07 09:00（Asia/Shanghai）
+- 执行项：升级 `docs/00_management/06-review-checklist.md` 至 v1.2.1，补齐“提交与追溯增强”检查项，并同步更新执行计划与范围日志。
+- 评审发现：
+  1) 现有清单覆盖“文档与评审证据”，但未显式约束提交完成态（push 成功 + 工作区干净）；
+  2) 提交说明与执行项之间缺少硬校验，后续审计回溯成本偏高。
+- 自动修正：
+  1) 在清单新增 G 节，强制检查“允许写入目录、提交说明匹配、push 成功与工作区干净”；
+  2) 在 `03-execution-plan.md` 增补 D6 v1.2.1 完成项；
+  3) 在 `05-scope-change-log.md` 追加本次变更生效记录。
+- 复评审结论：通过（闭环完整，未引入范围漂移，且提交链路可追溯性增强）。
+- 需用户拍板：无新增。
+- 证据文件：`docs/00_management/06-review-checklist.md`、`docs/00_management/03-execution-plan.md`、`docs/00_management/05-scope-change-log.md`
+
 ### 2026-03-07 08:50（Asia/Shanghai）
 - 执行项：升级 `docs/00_management/06-review-checklist.md` 至 v1.1，并在执行计划中新增 D6“治理与审计加固”阶段。
 - 评审发现：

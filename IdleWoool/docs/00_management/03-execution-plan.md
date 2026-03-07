@@ -66,6 +66,7 @@
 ## Phase D6：治理与审计加固（进行中）
 
 - [x] 完成 `docs/00_management/06-review-checklist.md` v1.1（补齐审计增强项）
+- [x] 完成 `docs/00_management/06-review-checklist.md` v1.2.1（补齐提交与追溯增强项）
 
 ## 每轮执行规则（自动执行版）
 
