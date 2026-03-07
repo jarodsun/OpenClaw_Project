@@ -338,7 +338,7 @@
 - 需用户拍板：无新增。
 - 证据文件：`docs/10_game_design/45-risk-register.md`、`docs/00_management/03-execution-plan.md`、`docs/00_management/05-scope-change-log.md`
 
-### 2026-03-07 08:40（Asia/Shanghai）
+### 2026-03-07 08:40（Asia/Shanghai）【D6｜目标文件：`docs/10_game_design/45-risk-register.md`】
 - 执行项：升级 `docs/10_game_design/45-risk-register.md` 至 v1.2，补齐风险受理最小证据模板与状态变更留痕约束。
 - 评审发现：
   1) v1.1 已定义受理阈值，但跨角色复核时缺少统一证据字段模板，存在口径不一致风险；
@@ -348,7 +348,7 @@
   2) 在 `5.3` 增加状态变更留痕约束，要求转态必须附模板字段。
 - 复评审结论：通过（与 D4.2 阶段一致，未引入范围漂移，发布门禁可审计性提升）。
 - 需用户拍板：无新增。
-- 证据文件：`docs/10_game_design/45-risk-register.md`、`docs/00_management/03-execution-plan.md`、`docs/00_management/05-scope-change-log.md`
+- 证据文件：`docs/10_game_design/45-risk-register.md:1`、`docs/00_management/03-execution-plan.md:1`、`docs/00_management/05-scope-change-log.md:1`
 
 ### 2026-03-07 09:00（Asia/Shanghai）【D6｜目标文件：`docs/00_management/06-review-checklist.md`】
 - 执行项：升级 `docs/00_management/06-review-checklist.md` 至 v1.2.1，补齐“提交与追溯增强”检查项，并同步更新执行计划与范围日志。
@@ -363,7 +363,7 @@
 - 需用户拍板：无新增。
 - 证据文件：`docs/00_management/06-review-checklist.md:47`、`docs/00_management/03-execution-plan.md:70`、`docs/00_management/05-scope-change-log.md:52`
 
-### 2026-03-07 08:50（Asia/Shanghai）
+### 2026-03-07 08:50（Asia/Shanghai）【D6｜目标文件：`docs/00_management/06-review-checklist.md`】
 - 执行项：升级 `docs/00_management/06-review-checklist.md` 至 v1.1，并在执行计划中新增 D6“治理与审计加固”阶段。
 - 评审发现：
   1) `45-risk-register.md` v1.2 已要求风险转态附证据，但清单未形成硬检查项；
@@ -374,7 +374,7 @@
   3) 在 `05-scope-change-log.md` 追加本次变更留痕。
 - 复评审结论：通过（闭环完整，未引入范围漂移，可直接用于后续每轮执行）。
 - 需用户拍板：无新增。
-- 证据文件：`docs/00_management/06-review-checklist.md`、`docs/00_management/03-execution-plan.md`、`docs/00_management/05-scope-change-log.md`
+- 证据文件：`docs/00_management/06-review-checklist.md:1`、`docs/00_management/03-execution-plan.md:1`、`docs/00_management/05-scope-change-log.md:1`
 
 ### 2026-03-07 09:10（Asia/Shanghai）【D6｜目标文件：`docs/00_management/06-review-checklist.md`】
 - 执行项：升级 `docs/00_management/06-review-checklist.md` 至 v1.3，新增“待拍板问题闭环增强”检查项，并同步更新执行计划与范围日志。
@@ -505,3 +505,15 @@
 - 复评审结论：通过（与 D6 阶段一致，未引入范围漂移，历史记录审计回放成本进一步下降）。
 - 需用户拍板：无（`Q-001` 继续保持 open，默认按 A 档推进）。
 - 证据文件：`docs/00_management/07-review-log.md:353`、`docs/00_management/03-execution-plan.md:79`、`docs/00_management/05-scope-change-log.md:17`、`memory/projects.md:282`
+
+### 2026-03-07 10:50（Asia/Shanghai）【D6｜管理文档轮次】
+- 执行项：补齐 `docs/00_management/07-review-log.md` 历史记录（08:40~08:50）模板一致性，统一增加阶段标识、目标文件名与证据行号；并同步更新 `03-execution-plan.md`、`05-scope-change-log.md` 与 `memory/projects.md`。
+- 评审发现：
+  1) 08:40、08:50 两条记录头部仍未统一到 D6 目标文件格式；
+  2) 两条记录证据文件仍为无行号路径，不满足 v1.8/v1.9 的定位粒度要求。
+- 自动修正：
+  1) 将 08:40、08:50 记录头部统一修正为“【D6｜目标文件：...】”；
+  2) 为两条记录证据文件补齐行号定位，确保模板与证据结构一致。
+- 复评审结论：通过（与 D6 阶段一致，未引入范围漂移，且 08:40~08:50 历史记录已满足 v1.8/v1.9 审计要求）。
+- 需用户拍板：无（`Q-001` 继续保持 open，默认按 A 档推进）。
+- 证据文件：`docs/00_management/07-review-log.md:341`、`docs/00_management/03-execution-plan.md:80`、`docs/00_management/05-scope-change-log.md:17`、`memory/projects.md:296`
