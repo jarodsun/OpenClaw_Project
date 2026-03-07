@@ -68,6 +68,8 @@
 - [x] 完成 `docs/00_management/06-review-checklist.md` v1.1（补齐审计增强项）
 - [x] 完成 `docs/00_management/06-review-checklist.md` v1.2.1（补齐提交与追溯增强项）
 - [x] 完成 `docs/00_management/06-review-checklist.md` v1.3（补齐待拍板问题闭环增强项）
+- [x] 完成 `docs/00_management/06-review-checklist.md` v1.4（补齐证据定位一致性增强项）
+- [x] 完成 `docs/00_management/06-review-checklist.md` v1.5（补齐开放问题去重与超期默认处理增强项）
 
 ## 每轮执行规则（自动执行版）
 

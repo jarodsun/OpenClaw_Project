@@ -40,3 +40,13 @@
 - [ ] 本轮评审已核对 `09-open-questions.md` 的 `open/decided/obsolete` 状态与实际一致
 - [ ] 若出现“可自动决策”事项，未写入 open questions，已直接修正并在 `07-review-log.md` 留痕
 - [ ] 若出现“必须人工拍板”事项，已写入 `09-open-questions.md` 且标注“默认处理”不阻塞推进
+
+## I. 证据定位增强（v1.4）
+- [ ] `07-review-log.md` 的“证据文件”至少包含 1 个可直达路径（必要时附 `:line`）
+- [ ] `05-scope-change-log.md` 的变更项可在本轮评审记录中找到对应执行项
+- [ ] `memory/projects.md` 的本轮摘要与 `07-review-log.md` 执行项语义一致（无相互矛盾描述）
+
+## J. 开放问题治理增强（v1.5）
+- [ ] `09-open-questions.md` 的 `open` 项已校验“去重”（无语义重复问题并存）
+- [ ] 每个 `open` 项均包含“最晚拍板时间”与“超期默认处理”
+- [ ] 对已超期仍未拍板事项，`07-review-log.md` 已记录“按默认处理继续推进”且未阻塞其他任务

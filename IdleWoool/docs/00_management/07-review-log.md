@@ -376,3 +376,30 @@
 - 复评审结论：通过（闭环完整，未引入范围漂移，治理链路进一步收敛）。
 - 需用户拍板：无新增（`Q-001` 保持 open，默认处理继续按 A 档执行）。
 - 证据文件：`docs/00_management/06-review-checklist.md`、`docs/00_management/03-execution-plan.md`、`docs/00_management/05-scope-change-log.md`
+
+### 2026-03-07 09:20（Asia/Shanghai）
+- 执行项：升级 `docs/00_management/06-review-checklist.md` 至 v1.4，新增“证据定位增强”检查项，并同步更新执行计划、范围日志与项目记忆。
+- 评审发现：
+  1) 现有评审日志虽有证据文件清单，但未硬约束“可直达定位”，审计复核定位成本偏高；
+  2) `05-scope-change-log.md` 与 `memory/projects.md` 缺少与本轮评审执行项的一致性强校验，存在语义漂移风险。
+- 自动修正：
+  1) 在清单新增 I 节，强制检查证据可定位与跨文档语义一致性；
+  2) 在 `03-execution-plan.md` 增补 D6 v1.4 完成项；
+  3) 在 `05-scope-change-log.md` 追加 v1.4 生效记录并校对描述；
+  4) 在 `memory/projects.md` 追加本轮摘要，确保与评审记录同口径。
+- 复评审结论：通过（闭环完整，未引入范围漂移，审计追溯效率提升）。
+- 需用户拍板：无新增（`Q-001` 维持 open，默认处理继续按 A 档执行）。
+- 证据文件：`docs/00_management/06-review-checklist.md`、`docs/00_management/03-execution-plan.md`、`docs/00_management/05-scope-change-log.md`、`memory/projects.md`
+
+### 2026-03-07 09:30（Asia/Shanghai）
+- 执行项：升级 `docs/00_management/06-review-checklist.md` 至 v1.5，新增“开放问题治理增强”检查项（去重、最晚拍板时间、超期默认处理、不中断推进留痕）。
+- 评审发现：
+  1) `09-open-questions.md` 当前 open 项仅有默认处理，但缺少“最晚拍板时间/超期默认处理”字段，时间治理约束不足；
+  2) 现有评审清单尚未将 open questions 去重与超期处置纳入硬检查项。
+- 自动修正：
+  1) 在 `06-review-checklist.md` 新增 J 节（v1.5）并固化三条治理检查；
+  2) 在 `09-open-questions.md` 的 `Q-001` 增补“最晚拍板时间（2026-03-10 18:00）”与“超期默认处理”；
+  3) 同步更新 `03-execution-plan.md`、`05-scope-change-log.md` 以归档本轮治理改进。
+- 复评审结论：通过（闭环完整，未引入范围漂移，且 open questions 治理可执行性提升）。
+- 需用户拍板：无新增（`Q-001` 保持 open，继续按 A 档默认处理推进）。
+- 证据文件：`docs/00_management/06-review-checklist.md`、`docs/00_management/09-open-questions.md`、`docs/00_management/03-execution-plan.md`、`docs/00_management/05-scope-change-log.md`
