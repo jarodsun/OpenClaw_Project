@@ -337,3 +337,16 @@
 - 复评审结论：通过（与 D4.2 阶段一致，未引入范围漂移，发布门禁可审计性提升）。
 - 需用户拍板：无新增。
 - 证据文件：`docs/10_game_design/45-risk-register.md`、`docs/00_management/03-execution-plan.md`、`docs/00_management/05-scope-change-log.md`
+
+### 2026-03-07 08:50（Asia/Shanghai）
+- 执行项：升级 `docs/00_management/06-review-checklist.md` 至 v1.1，并在执行计划中新增 D6“治理与审计加固”阶段。
+- 评审发现：
+  1) `45-risk-register.md` v1.2 已要求风险转态附证据，但清单未形成硬检查项；
+  2) 管理文档间时间戳一致性缺少显式核对动作。
+- 自动修正：
+  1) 在评审清单新增 F 节“可审计性增强（v1.2）”，固化证据模板与留痕一致性检查；
+  2) 在 `03-execution-plan.md` 增加 D6 阶段并勾选本轮治理改进任务；
+  3) 在 `05-scope-change-log.md` 追加本次变更留痕。
+- 复评审结论：通过（闭环完整，未引入范围漂移，可直接用于后续每轮执行）。
+- 需用户拍板：无新增。
+- 证据文件：`docs/00_management/06-review-checklist.md`、`docs/00_management/03-execution-plan.md`、`docs/00_management/05-scope-change-log.md`

@@ -25,3 +25,8 @@
 - [ ] 已更新 `07-review-log.md`
 - [ ] 已同步 `memory/projects.md`
 - [ ] 若有改动已 `commit + push`
+
+## F. 可审计性增强（v1.2）
+- [ ] 风险状态变更（`mitigating -> watching/closed`）已附最小证据模板字段
+- [ ] `07-review-log.md` 中已记录证据文件与自动修正动作
+- [ ] 管理文档（`03/05/07`）时间戳与执行项一致

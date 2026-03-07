@@ -63,6 +63,10 @@
 - [x] 完成 `docs/10_game_design/51-audio-visual-style-guide.md`
 - [x] 完成 `docs/10_game_design/52-liveops-and-monetization.md`
 
+## Phase D6：治理与审计加固（进行中）
+
+- [x] 完成 `docs/00_management/06-review-checklist.md` v1.1（补齐审计增强项）
+
 ## 每轮执行规则（自动执行版）
 
 1. 每轮至少完成 1 个文档的有效改进（新增章节、补齐关键内容、修订结构）。
