@@ -325,3 +325,15 @@
 - 复评审结论：通过（与 D4.2 阶段一致，未引入范围漂移，且提升 Go/No-Go 判定确定性）。
 - 需用户拍板：无新增。
 - 证据文件：`docs/10_game_design/45-risk-register.md`、`docs/00_management/03-execution-plan.md`、`docs/00_management/05-scope-change-log.md`
+
+### 2026-03-07 08:40（Asia/Shanghai）
+- 执行项：升级 `docs/10_game_design/45-risk-register.md` 至 v1.2，补齐风险受理最小证据模板与状态变更留痕约束。
+- 评审发现：
+  1) v1.1 已定义受理阈值，但跨角色复核时缺少统一证据字段模板，存在口径不一致风险；
+  2) 风险状态从 `mitigating` 变更到 `watching/closed` 缺少“必须附证据”的硬约束，存在审计缝隙。
+- 自动修正：
+  1) 新增 `3.1 风险受理证据模板`，统一 `Risk ID/时间窗口/核心指标/演练记录/Owner 结论/关联日志` 六项最小证据；
+  2) 在 `5.3` 增加状态变更留痕约束，要求转态必须附模板字段。
+- 复评审结论：通过（与 D4.2 阶段一致，未引入范围漂移，发布门禁可审计性提升）。
+- 需用户拍板：无新增。
+- 证据文件：`docs/10_game_design/45-risk-register.md`、`docs/00_management/03-execution-plan.md`、`docs/00_management/05-scope-change-log.md`
