@@ -3,9 +3,9 @@
 > 用法：每轮先在这里填写 `TaskPack-ID`，再逐项勾选；评审结果同步写入 `03-review-log.md`。
 
 ## 0. 本轮任务包信息
-- TaskPack-ID：`TP-R4`
-- 主题：传奇世界内容语料库（命名与语义）
-- 目标输出文件：`docs/10_research/14-legend-of-mir-content-corpus.md`
+- TaskPack-ID：`TP-R5`
+- 主题：双源融合映射（Idle MMO × 传奇世界）
+- 目标输出文件：`docs/10_research/15-dual-source-design-mapping.md`
 - 本轮状态目标：`done`
 
 ## A. 设计完整性
