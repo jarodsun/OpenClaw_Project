@@ -363,3 +363,16 @@
 - 复评审结论：通过（闭环完整，未引入范围漂移，可直接用于后续每轮执行）。
 - 需用户拍板：无新增。
 - 证据文件：`docs/00_management/06-review-checklist.md`、`docs/00_management/03-execution-plan.md`、`docs/00_management/05-scope-change-log.md`
+
+### 2026-03-07 09:10（Asia/Shanghai）
+- 执行项：升级 `docs/00_management/06-review-checklist.md` 至 v1.3，新增“待拍板问题闭环增强”检查项，并同步更新执行计划与范围日志。
+- 评审发现：
+  1) 现有清单未硬校验 `09-open-questions.md` 的状态与实际执行是否一致，存在问题池长期积压后失真风险；
+  2) “可自动修正项”与“需人工拍板项”边界虽在流程中定义，但缺少每轮显式核查，可能造成不必要的人工中断。
+- 自动修正：
+  1) 在清单新增 H 节，强制检查 open questions 生命周期一致性与默认处理不阻塞原则；
+  2) 在 `03-execution-plan.md` 增补 D6 v1.3 完成项；
+  3) 在 `05-scope-change-log.md` 追加本次变更生效记录。
+- 复评审结论：通过（闭环完整，未引入范围漂移，治理链路进一步收敛）。
+- 需用户拍板：无新增（`Q-001` 保持 open，默认处理继续按 A 档执行）。
+- 证据文件：`docs/00_management/06-review-checklist.md`、`docs/00_management/03-execution-plan.md`、`docs/00_management/05-scope-change-log.md`

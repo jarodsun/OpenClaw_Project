@@ -35,3 +35,8 @@
 - [ ] 本轮改动文件均位于允许写入目录（未触碰只读源目录）
 - [ ] `git commit` 信息与本轮执行项一一对应（简洁中文说明）
 - [ ] `git push` 成功且工作区回到干净状态（`git status` 无待提交）
+
+## H. 待拍板问题闭环增强（v1.3）
+- [ ] 本轮评审已核对 `09-open-questions.md` 的 `open/decided/obsolete` 状态与实际一致
+- [ ] 若出现“可自动决策”事项，未写入 open questions，已直接修正并在 `07-review-log.md` 留痕
+- [ ] 若出现“必须人工拍板”事项，已写入 `09-open-questions.md` 且标注“默认处理”不阻塞推进
