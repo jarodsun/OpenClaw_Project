@@ -114,6 +114,20 @@
 - 输出：`docs/20_design/53-v2-to-v5-technical-handover.md`
 - 验收：可直接指导工程实现拆解
 
+## 2.1 TaskPack 命名规范
+
+- 统一格式：`TP-<类别字母><序号>`（如 `TP-R1`、`TP-S4`）
+- 类别字母定义：
+  - `R` = Research（调研）
+  - `D` = Design Foundation（设计基线）
+  - `S` = Systems（核心系统）
+  - `B` = Balance & Experience（平衡与体验）
+  - `H` = Handover（封版与交接）
+- 使用要求：
+  - `03-review-log.md` 每条记录必须带 TaskPack-ID
+  - `04-decision-register.md` 若为某任务包决策，标题需包含对应 TaskPack-ID
+  - commit message 建议包含 TaskPack-ID，便于追溯
+
 ## 3. 本轮选包策略
 
 1. 优先选择最靠前的 `pending` 任务包。
