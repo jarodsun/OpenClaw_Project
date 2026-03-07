@@ -1,8 +1,8 @@
 # v2 评审清单模板（只读）
 
 > 用法：本文件为只读模板，不直接勾选。
-> 每轮复制到 `docs/00_management/reviews/YYYYMMDD-HHMM-<TaskPack-ID>-checklist.md` 后再填写与勾选。
-> `03-review-log.md` 仅记录该轮 checklist 文件路径。
+> 每轮使用本模板核对，并将结果追加到 `docs/00_management/reviews/YYYY-MM-DD-checklist-runs.md`。
+> `03-review-log.md` 仅记录当日评审文件路径。
 
 ## 0. 本轮任务包信息
 - TaskPack-ID：
