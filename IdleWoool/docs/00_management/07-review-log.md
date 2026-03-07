@@ -313,7 +313,7 @@
 - 需用户拍板：无新增（继续沿用 `09-open-questions.md` 的 `Q-001` 默认口径）。
 - 证据文件：`docs/10_game_design/01-product-requirements.md`、`docs/00_management/03-execution-plan.md`、`docs/00_management/05-scope-change-log.md`
 
-### 2026-03-07 08:20（Asia/Shanghai）
+### 2026-03-07 08:20（Asia/Shanghai）【D6｜目标文件：`docs/00_management/08-decision-register.md`】
 - 执行项：推进 D2.3 评审闭环沉淀，新增 `docs/00_management/08-decision-register.md` 的 `DEC-001`，并同步更新执行计划与范围日志。
 - 评审发现：
   1) `Q-001` 长时间 open，默认口径虽被多文档引用但未进入“已决策留痕”，存在审计断点；
@@ -323,9 +323,9 @@
   2) 将 D2.3 三项改为已完成，并在 `05-scope-change-log.md` 追加生效记录。
 - 复评审结论：通过（未引入范围漂移，且提升了评审与决策链路可追溯性）。
 - 需用户拍板：无新增（`Q-001` 仍待最终业务拍板）。
-- 证据文件：`docs/00_management/08-decision-register.md`、`docs/00_management/03-execution-plan.md`、`docs/00_management/05-scope-change-log.md`
+- 证据文件：`docs/00_management/08-decision-register.md:16`、`docs/00_management/03-execution-plan.md:36`、`docs/00_management/05-scope-change-log.md:66`
 
-### 2026-03-07 08:30（Asia/Shanghai）
+### 2026-03-07 08:30（Asia/Shanghai）【D6｜目标文件：`docs/10_game_design/45-risk-register.md`】
 - 执行项：升级 `docs/10_game_design/45-risk-register.md` 至 v1.1，补齐风险“受理阈值”与发布门禁“受理放行条件”。
 - 评审发现：
   1) 现有风险分级/缓解规则完整，但缺少“风险何时可被受理放行”的硬标准，导致 `watching` 状态在发布评审中解释空间较大；
@@ -336,7 +336,7 @@
   3) 在 `2.5` 明确“未受理原因”必须写入 `07-review-log.md`。
 - 复评审结论：通过（与 D4.2 阶段一致，未引入范围漂移，且提升 Go/No-Go 判定确定性）。
 - 需用户拍板：无新增。
-- 证据文件：`docs/10_game_design/45-risk-register.md`、`docs/00_management/03-execution-plan.md`、`docs/00_management/05-scope-change-log.md`
+- 证据文件：`docs/10_game_design/45-risk-register.md:1`、`docs/00_management/03-execution-plan.md:64`、`docs/00_management/05-scope-change-log.md:61`
 
 ### 2026-03-07 08:40（Asia/Shanghai）【D6｜目标文件：`docs/10_game_design/45-risk-register.md`】
 - 执行项：升级 `docs/10_game_design/45-risk-register.md` 至 v1.2，补齐风险受理最小证据模板与状态变更留痕约束。
@@ -517,3 +517,15 @@
 - 复评审结论：通过（与 D6 阶段一致，未引入范围漂移，且 08:40~08:50 历史记录已满足 v1.8/v1.9 审计要求）。
 - 需用户拍板：无（`Q-001` 继续保持 open，默认按 A 档推进）。
 - 证据文件：`docs/00_management/07-review-log.md:341`、`docs/00_management/03-execution-plan.md:80`、`docs/00_management/05-scope-change-log.md:17`、`memory/projects.md:296`
+
+### 2026-03-07 11:00（Asia/Shanghai）【D6｜管理文档轮次】
+- 执行项：补齐 `docs/00_management/07-review-log.md` 历史记录（08:20~08:30）模板一致性，统一增加阶段标识、目标文件名与证据行号；并同步更新 `03-execution-plan.md`、`05-scope-change-log.md` 与 `memory/projects.md`。
+- 评审发现：
+  1) 08:20、08:30 两条记录头部未统一到 D6 目标文件格式；
+  2) 两条记录证据文件为无行号路径，不满足 v1.8/v1.9 的定位粒度要求。
+- 自动修正：
+  1) 将 08:20、08:30 记录头部统一修正为“【D6｜目标文件：...】”；
+  2) 为两条记录证据文件补齐行号定位，确保模板与证据结构一致。
+- 复评审结论：通过（与 D6 阶段一致，未引入范围漂移，且 08:20~08:30 历史记录已满足 v1.8/v1.9 审计要求）。
+- 需用户拍板：无（`Q-001` 继续保持 open，默认按 A 档推进）。
+- 证据文件：`docs/00_management/07-review-log.md:316`、`docs/00_management/03-execution-plan.md:81`、`docs/00_management/05-scope-change-log.md:6`、`memory/projects.md:301`
