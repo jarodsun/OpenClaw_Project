@@ -1,4 +1,4 @@
-# v2 执行方案（可执行版）
+# v2 执行方案（任务包细化版）
 
 ## 0. 目标与边界
 
@@ -10,71 +10,112 @@
 - 不做数据库与 API 代码落地
 - 不做上线部署
 
-## 1. 工作流（持续推进）
+## 1. 执行规则（强约束）
 
-每轮执行固定流程：
-1) 选择一个设计子主题
-2) 产出文档增量
-3) 执行评审清单
-4) 记录评审结果
-5) 做出必要决策并登记
-6) 提交留痕（文档变更 + 记录）
+1. 每轮只完成 **1 个任务包（Task Pack）**。
+2. 每轮必须更新：
+   - `docs/00_management/03-review-log.md`
+   - `docs/00_management/04-decision-register.md`（如有决策）
+3. 任务包完成标准：输入已读、输出已写、验收已通过、留痕已完成。
+4. 无需人工拍板等待，可自决，但必须记录依据与回滚条件。
 
-## 2. 阶段任务拆解（v2）
+## 2. 任务包清单（按优先级）
 
-### P1：竞品与题材调研
-- 交付物：
-  - `docs/10_research/11-idle-mmo-core-loop-analysis.md`
-  - `docs/10_research/12-idle-mmo-system-analysis.md`
-  - `docs/10_research/13-legend-of-mir-style-reference.md`
-- 验收：形成可复用的“机制清单 + 命名语料库 + 风险点”。
+### P1 调研层（Research）
 
-### P2：设计基线
-- 交付物：
-  - `docs/20_design/21-design-principles.md`
-  - `docs/20_design/22-game-loop-v2.md`
-  - `docs/20_design/23-progression-framework.md`
-- 验收：明确“玩什么、为什么持续玩、如何长期增长”。
+#### TP-R1：Idle MMO 核心循环拆解
+- 状态：`pending`
+- 输入：`https://web.idle-mmo.com/`、`https://wiki.idle-mmo.com/`
+- 输出：`docs/10_research/11-idle-mmo-core-loop-analysis.md`
+- 验收：至少包含“循环步骤、关键资源、停留动机、风险点”4节
 
-### P3：系统设计（核心）
-- 交付物：
-  - `docs/20_design/31-combat-system.md`
-  - `docs/20_design/32-profession-skill-system.md`
-  - `docs/20_design/33-item-loot-system.md`
-  - `docs/20_design/34-player-trade-economy.md`
-  - `docs/20_design/35-world-map-region-design.md`
-- 验收：每个系统都有输入/规则/输出/边界/异常处理。
+#### TP-R2：Idle MMO 系统矩阵拆解
+- 状态：`pending`
+- 输入：同上
+- 输出：`docs/10_research/12-idle-mmo-system-analysis.md`
+- 验收：至少覆盖“战斗/成长/交易/地图/社交”5个系统
 
-### P4：平衡与体验
-- 交付物：
-  - `docs/20_design/41-balance-model.md`
-  - `docs/20_design/42-engagement-retention-hooks.md`
-- 验收：形成可调参框架与体验指标。
+#### TP-R3：传奇世界语料清单
+- 状态：`pending`
+- 输入：公开资料调研
+- 输出：`docs/10_research/13-legend-of-mir-style-reference.md`
+- 验收：至少包含“职业、技能、怪物、道具、地图区名”命名池
 
-### P5：v2 封版
-- 交付物：
-  - `docs/20_design/51-v2-design-package-index.md`
-  - `docs/20_design/52-v2-to-v3-handover.md`
-  - `docs/20_design/53-v2-to-v5-technical-handover.md`
-- 验收：v3/v5 可无歧义接力。
+### P2 设计基线（Foundation）
 
-## 3. 评审机制（调整后）
+#### TP-D1：设计原则定义
+- 状态：`pending`
+- 输出：`docs/20_design/21-design-principles.md`
+- 验收：至少 8 条设计原则，含“反例/不做什么”
 
-仅保留 3 份治理文档：
-- `docs/00_management/02-review-checklist.md`
-- `docs/00_management/03-review-log.md`
-- `docs/00_management/04-decision-register.md`
+#### TP-D2：核心循环设计
+- 状态：`pending`
+- 输出：`docs/20_design/22-game-loop-v2.md`
+- 验收：包含“在线循环、离线循环、回流触发、反疲劳机制”
 
-规则：
-- 无需人工拍板等待
-- 执行者可自主决策，但必须记录“决策依据 + 影响范围 + 回滚条件”
+#### TP-D3：成长框架设计
+- 状态：`pending`
+- 输出：`docs/20_design/23-progression-framework.md`
+- 验收：包含“等级、战力、稀有度、经济闭环”
 
-## 4. 留痕要求（强制）
+### P3 核心系统（Systems）
 
-每轮至少更新：
-- 至少 1 份设计文档
-- `03-review-log.md`（记录本轮评审）
-- `04-decision-register.md`（如有决策）
+#### TP-S1：战斗系统
+- 状态：`pending`
+- 输出：`docs/20_design/31-combat-system.md`
+- 验收：包含“结算公式、时序、异常与防滥用”
 
-建议提交信息格式：
-- `IdleWoool_v2: <本轮主题> + review log`
+#### TP-S2：职业与技能
+- 状态：`pending`
+- 输出：`docs/20_design/32-profession-skill-system.md`
+- 验收：包含“职业定位、技能树、升级与平衡入口”
+
+#### TP-S3：道具与掉落
+- 状态：`pending`
+- 输出：`docs/20_design/33-item-loot-system.md`
+- 验收：包含“掉落池、稀有度、保底、回收”
+
+#### TP-S4：玩家交易与经济
+- 状态：`pending`
+- 输出：`docs/20_design/34-player-trade-economy.md`
+- 验收：包含“交易机制、税率/手续费、反操纵规则”
+
+#### TP-S5：世界地图与区域
+- 状态：`pending`
+- 输出：`docs/20_design/35-world-map-region-design.md`
+- 验收：包含“区域分层、进入条件、风险收益梯度”
+
+### P4 平衡与体验（Balance & Experience）
+
+#### TP-B1：平衡模型
+- 状态：`pending`
+- 输出：`docs/20_design/41-balance-model.md`
+- 验收：包含“关键指标、调参旋钮、回滚策略”
+
+#### TP-B2：留存与参与钩子
+- 状态：`pending`
+- 输出：`docs/20_design/42-engagement-retention-hooks.md`
+- 验收：包含“短中长期目标与奖励闭环”
+
+### P5 封版与交接（Handover）
+
+#### TP-H1：v2 设计包索引
+- 状态：`pending`
+- 输出：`docs/20_design/51-v2-design-package-index.md`
+- 验收：所有文档有索引、状态、责任与版本
+
+#### TP-H2：v2 -> v3 交接
+- 状态：`pending`
+- 输出：`docs/20_design/52-v2-to-v3-handover.md`
+- 验收：可直接指导策划细化
+
+#### TP-H3：v2 -> v5 交接
+- 状态：`pending`
+- 输出：`docs/20_design/53-v2-to-v5-technical-handover.md`
+- 验收：可直接指导工程实现拆解
+
+## 3. 本轮选包策略
+
+1. 优先选择最靠前的 `pending` 任务包。
+2. 若任务包依赖未满足，写入 `03-review-log.md` 并跳到下一个可执行包。
+3. 每轮完成后将任务包状态更新为：`done` / `in_progress` / `blocked`。
