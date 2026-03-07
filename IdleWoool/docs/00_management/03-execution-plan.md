@@ -27,9 +27,9 @@
 - [x] 完成 `docs/10_game_design/21-content-config-schema.md`
 
 ### D2.3 评审闭环沉淀
-- [ ] 每轮执行更新 `docs/00_management/07-review-log.md`
-- [ ] 将需拍板事项写入 `docs/00_management/09-open-questions.md`
-- [ ] 将已决策事项归档到 `docs/00_management/08-decision-register.md`
+- [x] 每轮执行更新 `docs/00_management/07-review-log.md`
+- [x] 将需拍板事项写入 `docs/00_management/09-open-questions.md`
+- [x] 将已决策事项归档到 `docs/00_management/08-decision-register.md`
 
 ## Phase D3：技术架构与接口文档
 

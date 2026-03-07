@@ -300,3 +300,15 @@
 - 复评审结论：通过（与 D2.1 阶段一致，未引入范围外需求，且能直接约束接口、测试、发布文档执行）。
 - 需用户拍板：无新增（继续沿用 `09-open-questions.md` 的 `Q-001` 默认口径）。
 - 证据文件：`docs/10_game_design/01-product-requirements.md`、`docs/00_management/03-execution-plan.md`、`docs/00_management/05-scope-change-log.md`
+
+### 2026-03-07 08:20（Asia/Shanghai）
+- 执行项：推进 D2.3 评审闭环沉淀，新增 `docs/00_management/08-decision-register.md` 的 `DEC-001`，并同步更新执行计划与范围日志。
+- 评审发现：
+  1) `Q-001` 长时间 open，默认口径虽被多文档引用但未进入“已决策留痕”，存在审计断点；
+  2) `03-execution-plan.md` 的 D2.3 三项仍未勾选，与实际执行状态不一致。
+- 自动修正：
+  1) 新增 `DEC-001`，固化“未拍板前按 A 档（8h/70%）执行”的临时决策与回滚条件；
+  2) 将 D2.3 三项改为已完成，并在 `05-scope-change-log.md` 追加生效记录。
+- 复评审结论：通过（未引入范围漂移，且提升了评审与决策链路可追溯性）。
+- 需用户拍板：无新增（`Q-001` 仍待最终业务拍板）。
+- 证据文件：`docs/00_management/08-decision-register.md`、`docs/00_management/03-execution-plan.md`、`docs/00_management/05-scope-change-log.md`
