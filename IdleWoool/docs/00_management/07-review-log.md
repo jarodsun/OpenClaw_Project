@@ -403,3 +403,16 @@
 - 复评审结论：通过（闭环完整，未引入范围漂移，且 open questions 治理可执行性提升）。
 - 需用户拍板：无新增（`Q-001` 保持 open，继续按 A 档默认处理推进）。
 - 证据文件：`docs/00_management/06-review-checklist.md`、`docs/00_management/09-open-questions.md`、`docs/00_management/03-execution-plan.md`、`docs/00_management/05-scope-change-log.md`
+
+### 2026-03-07 09:40（Asia/Shanghai）
+- 执行项：升级 `docs/00_management/06-review-checklist.md` 至 v1.6，新增“决策一致性增强”检查项，并同步更新执行计划与范围日志。
+- 评审发现：
+  1) v1.5 已约束 open questions 时间治理，但未强制校验 `decided` 项是否落地到 `08-decision-register.md`，存在“问题已决但台账缺失”风险；
+  2) 评审记录中对新决策的“影响范围/回滚条件”未形成清单级硬检查，审计回溯成本偏高。
+- 自动修正：
+  1) 在 `06-review-checklist.md` 新增 K 节（v1.6），固化 open questions 与 decision register 的状态映射校验；
+  2) 在 `03-execution-plan.md` 勾选 D6 v1.6 完成项；
+  3) 在 `05-scope-change-log.md` 追加 v1.6 生效记录并明确影响。
+- 复评审结论：通过（闭环完整，未引入范围漂移，治理链路一致性提升）。
+- 需用户拍板：无新增（`Q-001` 继续保持 open，按 A 档默认处理推进）。
+- 证据文件：`docs/00_management/06-review-checklist.md`、`docs/00_management/03-execution-plan.md`、`docs/00_management/05-scope-change-log.md`、`docs/00_management/08-decision-register.md`

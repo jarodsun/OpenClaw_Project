@@ -50,3 +50,8 @@
 - [ ] `09-open-questions.md` 的 `open` 项已校验“去重”（无语义重复问题并存）
 - [ ] 每个 `open` 项均包含“最晚拍板时间”与“超期默认处理”
 - [ ] 对已超期仍未拍板事项，`07-review-log.md` 已记录“按默认处理继续推进”且未阻塞其他任务
+
+## K. 决策一致性增强（v1.6）
+- [ ] `09-open-questions.md` 中状态为 `decided` 的事项，已在 `08-decision-register.md` 存在对应 `DEC-*` 记录
+- [ ] `08-decision-register.md` 新增决策已在 `07-review-log.md` 标注影响范围与回滚条件
+- [ ] `09-open-questions.md` 中 `open` 事项未被误登记为已决策（避免双重状态并存）
