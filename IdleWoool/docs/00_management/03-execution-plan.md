@@ -14,7 +14,7 @@
 ## Phase D2：核心产品与玩法文档（进行中）
 
 ### D2.1 产品与范围
-- [ ] 完成 `docs/10_game_design/01-product-requirements.md`
+- [x] 完成 `docs/10_game_design/01-product-requirements.md`
 - [x] 完成 `docs/10_game_design/03-feature-scope-mvp.md`
 - [x] 完成 `docs/10_game_design/02-game-design-core-loop.md`
 

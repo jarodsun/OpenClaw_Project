@@ -288,3 +288,15 @@
 - 复评审结论：通过（与 D5 阶段一致，未引入范围漂移，且可直接支撑运营配置、支付联调与发布门禁）。
 - 需用户拍板：无新增（继续沿用 `09-open-questions.md` 的 `Q-001` 默认口径）。
 - 证据文件：`docs/10_game_design/52-liveops-and-monetization.md`、`docs/00_management/03-execution-plan.md`、`docs/00_management/05-scope-change-log.md`
+
+### 2026-03-07 08:10（Asia/Shanghai）
+- 执行项：升级 `docs/10_game_design/01-product-requirements.md` 至 v1.1，补齐默认执行口径与跨文档门禁，并在执行计划中完成勾选。
+- 评审发现：
+  1) 执行计划中 PRD 项仍未勾选，阶段状态与文档现状不一致；
+  2) 原 PRD 对离线默认值与幂等键缺少显式约束，接口与测试落地存在口径漂移风险。
+- 自动修正：
+  1) 在 PRD 新增默认口径（8h/70%/`X-Request-Id`）；
+  2) 新增“文档衔接与门禁”章节并同步勾选 `03-execution-plan.md`。
+- 复评审结论：通过（与 D2.1 阶段一致，未引入范围外需求，且能直接约束接口、测试、发布文档执行）。
+- 需用户拍板：无新增（继续沿用 `09-open-questions.md` 的 `Q-001` 默认口径）。
+- 证据文件：`docs/10_game_design/01-product-requirements.md`、`docs/00_management/03-execution-plan.md`、`docs/00_management/05-scope-change-log.md`

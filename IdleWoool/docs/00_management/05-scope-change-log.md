@@ -14,6 +14,11 @@
 
 ### 2026-03-07
 
+- 变更：升级 `docs/10_game_design/01-product-requirements.md` 至 v1.1，补齐“默认执行口径（离线上限 8h/效率 70%/幂等键）”与“文档衔接门禁”。
+- 原因：执行计划中 PRD 项仍未勾选，且原文档缺少可直接映射到接口/测试/发布门禁的硬约束，存在后续联调口径漂移风险。
+- 影响：D2.1 产品与范围文档闭合；`34-api-contract.md`、`41-testing-strategy.md`、`44-release-plan-and-milestones.md` 的离线收益与幂等门禁具备统一上游基线。
+- 状态：生效
+
 - 变更：完成并落地 `docs/10_game_design/52-liveops-and-monetization.md` v1.0（活动分层、活动模板、商业化分层、定价锚点、转化路径、风控合规、埋点与 DoD），并在自评审后自动补齐“同周期 SKU 数量上限”以降低选择过载风险。
 - 原因：D5 阶段缺少运营与商业化执行基线，导致活动配置、支付链路、数据分析与发布门禁无法形成闭环。
 - 影响：D5 阶段文档闭合；后续实现可直接按统一口径推进 `34-api-contract.md`（支付幂等）、`42-observability-and-logs.md`（商业化埋点）与 `44-release-plan-and-milestones.md`（活动灰度门禁）。
