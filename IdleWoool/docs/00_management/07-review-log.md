@@ -429,3 +429,17 @@
 - 复评审结论：通过（闭环完整，未引入范围漂移，且每轮有效增量可验证性提升）。
 - 需用户拍板：无新增（`Q-001` 维持 open，默认按 A 档继续推进）。
 - 证据文件：`docs/00_management/06-review-checklist.md`、`docs/00_management/03-execution-plan.md`、`docs/00_management/05-scope-change-log.md`
+
+### 2026-03-07 10:00（Asia/Shanghai）
+- 执行项：升级 `docs/00_management/06-review-checklist.md` 至 v1.8，新增 M 节“归档一致性增强”，并同步更新 `03-execution-plan.md`、`05-scope-change-log.md` 与 `memory/projects.md`。
+- 评审发现：
+  1) 既有清单虽要求证据文件可直达，但未强制“行号级定位”，审计复核仍需手动定位；
+  2) 范围日志与项目记忆未被硬约束为统一摘要结构，存在跨文档复盘成本偏高问题。
+- 自动修正：
+  1) 在 `06-review-checklist.md` 新增 M 节三条检查项，固化行号定位与归档三要素；
+  2) 在 `03-execution-plan.md` 勾选 D6 v1.8 完成项；
+  3) 在 `05-scope-change-log.md` 追加 v1.8 生效记录并标注 D6 与目标文件；
+  4) 在 `memory/projects.md` 追加本轮“执行项 + 自动修正点 + 下一步目标”摘要。
+- 复评审结论：通过（闭环完整，未引入范围漂移，归档一致性与审计回放效率提升）。
+- 需用户拍板：无新增（`Q-001` 继续保持 open，默认按 A 档推进）。
+- 证据文件：`docs/00_management/06-review-checklist.md:64`、`docs/00_management/03-execution-plan.md:75`、`docs/00_management/05-scope-change-log.md:17`、`memory/projects.md:267`
