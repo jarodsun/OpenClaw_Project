@@ -13,9 +13,10 @@
 ## 1. 执行规则（强约束）
 
 1. 每轮只完成 **1 个任务包（Task Pack）**。
-2. 每轮必须更新：
-   - `docs/00_management/03-review-log.md`
-   - `docs/00_management/04-decision-register.md`（如有决策）
+2. 每轮必须使用与更新：
+   - 使用 `docs/00_management/02-review-checklist.md` 完成评审勾选
+   - 更新 `docs/00_management/03-review-log.md`
+   - 更新 `docs/00_management/04-decision-register.md`（如有决策）
 3. 任务包完成标准：输入已读、输出已写、验收已通过、留痕已完成。
 4. 无需人工拍板等待，可自决，但必须记录依据与回滚条件。
 
