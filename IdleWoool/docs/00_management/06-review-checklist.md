@@ -55,3 +55,8 @@
 - [ ] `09-open-questions.md` 中状态为 `decided` 的事项，已在 `08-decision-register.md` 存在对应 `DEC-*` 记录
 - [ ] `08-decision-register.md` 新增决策已在 `07-review-log.md` 标注影响范围与回滚条件
 - [ ] `09-open-questions.md` 中 `open` 事项未被误登记为已决策（避免双重状态并存）
+
+## L. 闭环最小完备增强（v1.7）
+- [ ] 本轮至少存在 1 个被实际修改的文档文件（非仅状态勾选）
+- [ ] `07-review-log.md` 已记录“评审发现 -> 自动修正”的一一对应关系（不少于 1 条）
+- [ ] `05-scope-change-log.md` 本轮变更项可映射到具体文档文件与执行计划阶段

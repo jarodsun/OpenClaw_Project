@@ -416,3 +416,16 @@
 - 复评审结论：通过（闭环完整，未引入范围漂移，治理链路一致性提升）。
 - 需用户拍板：无新增（`Q-001` 继续保持 open，按 A 档默认处理推进）。
 - 证据文件：`docs/00_management/06-review-checklist.md`、`docs/00_management/03-execution-plan.md`、`docs/00_management/05-scope-change-log.md`、`docs/00_management/08-decision-register.md`
+
+### 2026-03-07 09:50（Asia/Shanghai）
+- 执行项：升级 `docs/00_management/06-review-checklist.md` 至 v1.7，新增 L 节“闭环最小完备增强”，并同步更新执行计划与范围日志。
+- 评审发现：
+  1) 现有清单对一致性与决策链路覆盖充分，但未硬约束“每轮必须有实质文档改动”，存在仅状态变更的形式化风险；
+  2) “评审发现 -> 自动修正 -> 影响文件”映射未被清单显式要求，审计核对仍需人工二次比对。
+- 自动修正：
+  1) 在 `06-review-checklist.md` 新增 L 节三条硬检查（实质改动、发现修正映射、范围日志阶段映射）；
+  2) 在 `03-execution-plan.md` 勾选 D6 v1.7 完成项；
+  3) 在 `05-scope-change-log.md` 追加 v1.7 生效记录。
+- 复评审结论：通过（闭环完整，未引入范围漂移，且每轮有效增量可验证性提升）。
+- 需用户拍板：无新增（`Q-001` 维持 open，默认按 A 档继续推进）。
+- 证据文件：`docs/00_management/06-review-checklist.md`、`docs/00_management/03-execution-plan.md`、`docs/00_management/05-scope-change-log.md`
