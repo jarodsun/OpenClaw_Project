@@ -24,23 +24,39 @@
 
 ### P1 调研层（Research）
 
-#### TP-R1：Idle MMO 核心循环拆解
+> 总原则：P1 不是“摘重点”，而是“完整吃透双源游戏”。
+> - Idle MMO：重点提炼 Web 端挂机游戏的方法论与产品工程特质。
+> - 传奇世界：作为目标产品的内核与灵魂，需完整拆解世界观、系统逻辑与内容语义。
+
+#### TP-R1：Idle MMO 全景调研（产品与体验）
 - 状态：`pending`
 - 输入：`https://web.idle-mmo.com/`、`https://wiki.idle-mmo.com/`
-- 输出：`docs/10_research/11-idle-mmo-core-loop-analysis.md`
-- 验收：至少包含“循环步骤、关键资源、停留动机、风险点”4节
+- 输出：`docs/10_research/11-idle-mmo-full-spectrum-analysis.md`
+- 验收：至少包含“信息架构、核心循环、成长节奏、留存机制、经济与交易、社交结构、Web端交互特质、可迁移设计原则”8节
 
-#### TP-R2：Idle MMO 系统矩阵拆解
+#### TP-R2：Idle MMO 系统深拆（规则与参数）
 - 状态：`pending`
 - 输入：同上
-- 输出：`docs/10_research/12-idle-mmo-system-analysis.md`
-- 验收：至少覆盖“战斗/成长/交易/地图/社交”5个系统
+- 输出：`docs/10_research/12-idle-mmo-system-deconstruction.md`
+- 验收：至少覆盖“战斗/成长/装备/技能/交易/地图/任务活动/资源产消”8个系统；每个系统包含输入-规则-输出-边界
 
-#### TP-R3：传奇世界语料清单
+#### TP-R3：传奇世界全景调研（内核与灵魂）
 - 状态：`pending`
-- 输入：公开资料调研
-- 输出：`docs/10_research/13-legend-of-mir-style-reference.md`
-- 验收：至少包含“职业、技能、怪物、道具、地图区名”命名池
+- 输入：传奇世界公开资料、百科、玩家资料、视频与社区资料
+- 输出：`docs/10_research/13-legend-of-mir-full-spectrum-analysis.md`
+- 验收：至少包含“世界观主线、职业体系、成长体系、技能体系、怪物生态、道具体系、地图区域结构、核心玩法精神”8节
+
+#### TP-R4：传奇世界内容语料库（命名与语义）
+- 状态：`pending`
+- 输入：同上
+- 输出：`docs/10_research/14-legend-of-mir-content-corpus.md`
+- 验收：建立可复用语料清单，至少含“职业/技能/怪物/道具/地图区名/NPC阵营/剧情意象/术语词典”8类
+
+#### TP-R5：双源融合映射（Idle MMO × 传奇世界）
+- 状态：`pending`
+- 输入：TP-R1~TP-R4 产出
+- 输出：`docs/10_research/15-dual-source-design-mapping.md`
+- 验收：明确“可直接继承/需变体改造/不采用”三类映射清单，并给出 v2 设计输入约束
 
 ### P2 设计基线（Foundation）
 
