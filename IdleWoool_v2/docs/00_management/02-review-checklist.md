@@ -3,10 +3,10 @@
 > 用法：每轮先在这里填写 `TaskPack-ID`，再逐项勾选；评审结果同步写入 `03-review-log.md`。
 
 ## 0. 本轮任务包信息
-- TaskPack-ID：`TP-____`
-- 主题：
-- 目标输出文件：
-- 本轮状态目标：`done` / `in_progress` / `blocked`
+- TaskPack-ID：`TP-R1`
+- 主题：Idle MMO 全景调研（产品与体验）
+- 目标输出文件：`docs/10_research/11-idle-mmo-full-spectrum-analysis.md`
+- 本轮状态目标：`done`
 
 ## A. 设计完整性
 - [ ] 目标用户与场景明确

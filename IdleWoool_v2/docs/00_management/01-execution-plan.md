@@ -29,7 +29,7 @@
 > - 传奇世界：作为目标产品的内核与灵魂，需完整拆解世界观、系统逻辑与内容语义。
 
 #### TP-R1：Idle MMO 全景调研（产品与体验）
-- 状态：`pending`
+- 状态：`done`
 - 输入：`https://web.idle-mmo.com/`、`https://wiki.idle-mmo.com/`
 - 输出：`docs/10_research/11-idle-mmo-full-spectrum-analysis.md`
 - 验收：至少包含“信息架构、核心循环、成长节奏、留存机制、经济与交易、社交结构、Web端交互特质、可迁移设计原则”8节
