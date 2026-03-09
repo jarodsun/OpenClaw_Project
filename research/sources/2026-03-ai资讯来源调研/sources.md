@@ -46,7 +46,22 @@
 17. 量子位  
     - https://www.qbitai.com/
 
+## Round3：小众/垂直候选池
+
+### 英文（垂直）
+- Import AI: https://www.importai.net/
+- Interconnects AI: https://www.interconnects.ai/
+- Latent.Space: https://www.latent.space/
+- Last Week in AI: https://lastweekin.ai/
+- The Batch: https://www.deeplearning.ai/the-batch/
+- SemiAnalysis: https://semianalysis.com/
+- Turing Post: https://www.turingpost.com/
+
+### 中文（垂直）
+- AI工具集每日AI资讯: https://ai-bot.cn/daily-ai-news/
+
 ## 备注
 - 新智元标准域名已修正为 `aiera.com.cn`。
 - 雷峰网 AI 与 AI科技评论按同源合并管理。
 - 中文来源默认启用更严格去重阈值。
+- “Notion一手资讯页”线索已启动追踪，当前未定位到明确公开链接。
