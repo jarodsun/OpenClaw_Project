@@ -14,6 +14,7 @@
 - `sources/`：原始资料与引用清单
 - `notes/`：过程记录（建议按日期命名）
 - `reports/`：对外或对内输出报告
+- `templates/slide/`：HTML 幻灯片模板与固化流程
 
 ## 推荐流程
 
@@ -22,6 +23,7 @@
 3. 先写 `01-overview.md`，明确目标与成功标准
 4. 根据项目类型（技术/商业）填写对应章节
 5. 汇总到 `reports/` 形成决策建议
+6. 按 `templates/slide/README.md` 将报告同步产出同级 `.slide.html` 用于演示
 
 ## 主题目录建议
 
